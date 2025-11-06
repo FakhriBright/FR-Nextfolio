@@ -1,27 +1,89 @@
-'use client'
-import { useState } from 'react'
+"use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-export default function Contact() {
-  const [form, setForm] = useState({name:'', email:'', message:''})
-  const [sent, setSent] = useState(false)
+export default function ContactPage() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
 
-  const submit = (e) => {
-    e.preventDefault()
-    // for demo we just show success
-    setSent(true)
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSent(true);
+    setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setSent(false), 4000);
+  };
 
   return (
-    <section>
-      <h2 className="text-2xl font-bold mb-4">Contact</h2>
-      {sent ? <p className="p-4 bg-green-100 rounded">Pesan terkirim! (demo)</p> : (
-        <form onSubmit={submit} className="max-w-md">
-          <input className="w-full mb-2 p-2 border rounded" placeholder="Name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} />
-          <input className="w-full mb-2 p-2 border rounded" placeholder="Email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} />
-          <textarea className="w-full mb-2 p-2 border rounded" placeholder="Message" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} />
-          <button className="px-4 py-2 bg-blue-600 text-white rounded">Send</button>
-        </form>
+    <main className="max-w-lg mx-auto p-6">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="text-3xl font-bold mb-6 text-center dark:text-white"
+      >
+        Hubungi Saya 📩
+      </motion.h1>
+
+      <motion.form
+        onSubmit={handleSubmit}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex flex-col gap-4 bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6"
+      >
+        <input
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Nama Anda"
+          required
+          className="border border-gray-300 dark:border-gray-600 bg-transparent rounded-md px-3 py-2"
+        />
+
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Email Anda"
+          required
+          className="border border-gray-300 dark:border-gray-600 bg-transparent rounded-md px-3 py-2"
+        />
+
+        <textarea
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          placeholder="Pesan Anda"
+          rows="4"
+          required
+          className="border border-gray-300 dark:border-gray-600 bg-transparent rounded-md px-3 py-2"
+        ></textarea>
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white rounded-md py-2 hover:bg-blue-700 transition"
+        >
+          Kirim Pesan
+        </button>
+      </motion.form>
+
+      {sent && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mt-4 text-green-600 text-center font-medium"
+        >
+          Pesan berhasil dikirim ✅
+        </motion.div>
       )}
-    </section>
-  )
+    </main>
+  );
 }

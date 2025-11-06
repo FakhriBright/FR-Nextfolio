@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #__next {
-  height: 100%;
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-white dark:bg-gray-900 transition-colors duration-300;
 }
 
-/* Example utilities for light/dark */
-body {
-  @apply bg-white text-gray-900;
+:root {
+  --font-primary: var(--font-poppins);
 }
-.dark body {
-  @apply bg-gray-900 text-gray-100;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
 }

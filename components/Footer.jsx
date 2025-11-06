@@ -1,9 +1,7 @@
-export default function Footer(){
+export default function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 mt-8">
-      <div className="container mx-auto px-4 py-6 text-center text-sm">
-        © {new Date().getFullYear()} FR-Nextfolio. All rights reserved.
-      </div>
+    <footer className="border-t border-gray-200 dark:border-gray-700 py-6 text-center text-gray-500 dark:text-gray-400">
+      <p>© {new Date().getFullYear()} Fakhri Rizkian — Built with Next.js & Tailwind</p>
     </footer>
-  )
+  );
 }
