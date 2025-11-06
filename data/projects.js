@@ -1,23 +1,27 @@
+// data/projects.js
 export const projects = [
   {
     id: 1,
-    title: "FR-Nextfolio",
-    description: "Portfolio interaktif yang menampilkan project, skill, dan kontak.",
-    tags: ["nextjs", "tailwind", "react"],
+    title: "Website Sekolah SMK TI Bazma",
+    description: "Website profil sekolah dengan halaman jurusan, guru, dan galeri.",
+    tech: ["Next.js", "Tailwind", "Framer Motion"],
+    image: "/project1.jpg",
     link: "#"
   },
   {
     id: 2,
-    title: "To-do Demo",
-    description: "Contoh penggunaan useState untuk fitur tambah/hapus tugas.",
-    tags: ["react", "state"],
+    title: "Sistem Piket Asrama",
+    description: "Aplikasi sederhana untuk mengelola jadwal piket siswa.",
+    tech: ["React", "Tailwind"],
+    image: "/project2.jpg",
     link: "#"
   },
   {
     id: 3,
-    title: "Blog Mini",
-    description: "Template blog statis dengan routing dasar.",
-    tags: ["nextjs", "ssg"],
+    title: "FR-Nextfolio",
+    description: "Portofolio pribadi interaktif dengan animasi halus dan dark mode.",
+    tech: ["Next.js", "Framer Motion"],
+    image: "/project3.jpg",
     link: "#"
   }
-]
+];
