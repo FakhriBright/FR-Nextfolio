@@ -3,9 +3,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CursorEffect from "@/components/CursorEffect"; // 🌀 tambahkan ini
 import { usePathname } from "next/navigation";
 import { Inter, Poppins } from "next/font/google";
-import "../styles/globals.css"; // ganti sesuai lokasi globals.css kamu
+import "../styles/globals.css"; // pastikan path sudah benar
 
 // ✅ Tambahkan font profesional
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -20,10 +21,14 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-[var(--font-inter)] bg-white dark:bg-gray-900 transition-colors duration-300">
+      <body className="font-[var(--font-inter)] bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-x-hidden">
+        {/* ✨ Efek Kursor Global */}
+        <CursorEffect />
+
+        {/* ✨ Navbar */}
         <Navbar />
 
-        {/* ✨ Animasi transisi halaman */}
+        {/* ✨ Transisi antar halaman */}
         <AnimatePresence mode="wait">
           <motion.div
             key={pathname}
@@ -37,6 +42,7 @@ export default function RootLayout({ children }) {
           </motion.div>
         </AnimatePresence>
 
+        {/* ✨ Footer */}
         <Footer />
       </body>
     </html>
