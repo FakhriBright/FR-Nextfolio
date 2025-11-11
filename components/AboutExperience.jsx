@@ -43,7 +43,7 @@ export default function AboutExperience() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-16">
       <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-        Experience 💼
+        Experience 
       </h2>
 
       <div className="flex flex-col lg:flex-row gap-10">
