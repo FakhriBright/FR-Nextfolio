@@ -1,48 +1,20 @@
-"use client";
-
-import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CursorEffect from "@/components/CursorEffect"; // 🌀 tambahkan ini
-import { usePathname } from "next/navigation";
-import { Inter, Poppins } from "next/font/google";
-import "../styles/globals.css"; // pastikan path sudah benar
+import AnimatedBackground from "@/components/AnimatedBackground";
+import "../styles/globals.css";
 
-// ✅ Tambahkan font profesional
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-});
+export const metadata = {
+  title: "FR-Nextfolio",
+  description: "Portfolio by Moh. Fakhri Rizkian",
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-[var(--font-inter)] bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-x-hidden">
-        {/* ✨ Efek Kursor Global */}
-        <CursorEffect />
-
-        {/* ✨ Navbar */}
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <AnimatedBackground />
         <Navbar />
-
-        {/* ✨ Transisi antar halaman */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="min-h-[80vh]"
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* ✨ Footer */}
+        <div className="min-h-[80vh] relative z-10">{children}</div>
         <Footer />
       </body>
     </html>

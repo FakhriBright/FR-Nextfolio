@@ -10,7 +10,7 @@ export default function CertificationsGrid() {
   return (
     <section>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Certifications 🏅
+        Certifications 
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {certs.map((cert, i) => (

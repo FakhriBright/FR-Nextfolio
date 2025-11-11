@@ -1,4 +1,5 @@
 "use client";
+import TransitionProvider from "@/components/TransitionProvider";
 import HeroSection from "@/components/about/HeroSection";
 import ProjectsShowcase from "@/components/about/ProjectsShowcase";
 import CertificationsGrid from "@/components/about/CertificationsGrid";
@@ -7,12 +8,14 @@ import ContactSection from "@/components/about/ContactSection";
 
 export default function AboutPage() {
   return (
-    <main className="max-w-7xl mx-auto px-6 py-24 space-y-24">
-      <HeroSection />
-      <ProjectsShowcase />
-      <CertificationsGrid />
-      <EducationCarousel />
-      <ContactSection />
-    </main>
+    <TransitionProvider>
+      <main className="max-w-7xl mx-auto px-6 py-24 space-y-24">
+        <HeroSection />
+        <ProjectsShowcase />
+        <CertificationsGrid />
+        <EducationCarousel />
+        <ContactSection />
+      </main>
+    </TransitionProvider>
   );
 }

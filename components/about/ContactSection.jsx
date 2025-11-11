@@ -13,7 +13,7 @@ export default function ContactSection() {
   return (
     <section className="text-center">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Contact ☎️
+        Contact 
       </h2>
       <div className="flex justify-center gap-6">
         {contacts.map((c, i) => (
