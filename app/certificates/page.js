@@ -12,7 +12,7 @@ export default function CertificatesPage() {
         transition={{ duration: 0.4 }}
         className="text-3xl md:text-4xl font-bold mb-10 text-center dark:text-white"
       >
-        Sertifikasi & Penghargaan 🏆
+        Sertifikasi & Penghargaan 
       </motion.h1>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

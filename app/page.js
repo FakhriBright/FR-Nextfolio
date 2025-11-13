@@ -7,24 +7,12 @@ export default function HomePage() {
   return (
     <TransitionProvider>
       <main className="relative overflow-hidden max-w-6xl mx-auto px-6 py-28 text-center space-y-16">
-        {/* 🌌 Animated Background */}
+        {/*  Animated Background */}
         <motion.div
           className="absolute inset-0 z-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <motion.div
-            className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-3xl"
-            animate={{
-              x: [0, 80, -60, 0],
-              y: [0, 40, -30, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 15,
-              ease: "easeInOut",
-            }}
-          />
           <motion.div
             className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-purple-400/20 rounded-full blur-3xl"
             animate={{
@@ -39,7 +27,7 @@ export default function HomePage() {
           />
         </motion.div>
 
-        {/* 🌟 Hero Section */}
+        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,7 +62,7 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* 🌠 Subtext */}
+        {/*  Subtext */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

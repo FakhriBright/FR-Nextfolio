@@ -26,7 +26,7 @@ export default function ContactPage() {
         transition={{ duration: 0.4 }}
         className="text-3xl font-bold mb-6 text-center dark:text-white"
       >
-        Hubungi Saya 📩
+        Hubungi Saya 
       </motion.h1>
 
       <motion.form

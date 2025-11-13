@@ -11,14 +11,11 @@ export default function HeroSection() {
   return (
     <section className="flex flex-col lg:flex-row items-center gap-10 overflow-hidden">
       {/* Foto Profil */}
-      <motion.img
-        src="/profile.jpg"
-        alt="Foto Moh. Fakhri Rizkian"
-        className="w-56 h-56 rounded-2xl object-cover shadow-lg ring-4 ring-blue-500/20"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-      />
+      <img
+  src="/profile.png"
+  alt="Foto Profil Fakhri Rizkian"
+  className="w-56 h-56 object-cover rounded-2xl shadow-lg ring-4 ring-blue-500/20"
+/>
 
       {/* Deskripsi + Skills */}
       <motion.div
@@ -39,7 +36,7 @@ export default function HeroSection() {
           Saya juga aktif dalam <span className="font-semibold">organisasi, event management</span>, dan berbagai proyek digital.
         </p>
 
-        {/* ✨ Animasi Skills */}
+        {/*  Animasi Skills */}
         <div className="relative w-full overflow-hidden py-3 mt-6">
           <motion.div
             className="flex gap-6 whitespace-nowrap"
