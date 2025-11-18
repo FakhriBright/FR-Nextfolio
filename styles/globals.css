@@ -5,14 +5,49 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
   @apply bg-white dark:bg-gray-900 transition-colors duration-300;
 }
 
+/* FONT */
 :root {
   --font-primary: var(--font-poppins);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
+}
+
+
+/* =========================================================
+   CUSTOM CURSOR + PARTICLE EFFECT
+   ========================================================= */
+
+/* Hilangkan cursor default */
+html, body {
+  cursor: none !important;
+}
+
+/* Partikel yang berhamburan */
+.cursor-particle {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  opacity: 1;
+  animation: particleFade 0.35s linear forwards;
+  z-index: 99998;
+}
+
+/* Animasi partikel menghilang */
+@keyframes particleFade {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.4);
+  }
 }

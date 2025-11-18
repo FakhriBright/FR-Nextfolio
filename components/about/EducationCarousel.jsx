@@ -21,7 +21,7 @@ export default function EducationCarousel() {
   return (
     <section className="text-center">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Education 🎓
+        Education 
       </h2>
       <div className="h-16 overflow-hidden flex items-center justify-center">
         <motion.p

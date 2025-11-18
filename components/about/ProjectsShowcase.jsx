@@ -53,6 +53,12 @@ const projects = [
     link: "https://cuacafakhri.netlify.app/",
   },
   {
+    title: "Dashboard Smart Lamp",
+    desc: "Mengontrol Lampu dengan sebuah tampilan website.",
+    image: "/projects/dashboard-siot.png",
+    link: "https://siot-4.netlify.app/",
+  },
+  {
     title: "Apps List",
     desc: "Memberikan catatan realtime untuk anda.",
     image: "/projects/todo-list.png",

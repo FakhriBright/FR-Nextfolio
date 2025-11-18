@@ -1,67 +1,81 @@
 "use client";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export default function CardProject({ title, description, tech, image, link }) {
+export default function CursorEffect() {
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    const cursor = document.getElementById("cursor-dot");
+    const container = document.getElementById("cursor-particles");
+
+    // === Move Cursor ===
+    const move = (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
+      // Random particle burst
+      for (let i = 0; i < 6; i++) {
+        const p = document.createElement("div");
+        p.className = "cursor-particle";
+
+        const size = Math.random() * 6 + 3;
+        const angle = Math.random() * 2 * Math.PI;
+        const speed = Math.random() * 20 + 8;
+
+        const dx = Math.cos(angle) * speed;
+        const dy = Math.sin(angle) * speed;
+
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.left = e.clientX + "px";
+        p.style.top = e.clientY + "px";
+        p.style.transform = `translate(${dx}px, ${dy}px)`;
+
+        container.appendChild(p);
+
+        setTimeout(() => p.remove(), 350);
+      }
+    };
+
+    window.addEventListener("mousemove", move);
+
+    // Detect hover
+    const hoverTargets = document.querySelectorAll("a, button, .hover-target");
+    const enter = () => setHovered(true);
+    const leave = () => setHovered(false);
+
+    hoverTargets.forEach((el) => {
+      el.addEventListener("mouseenter", enter);
+      el.addEventListener("mouseleave", leave);
+    });
+
+    return () => {
+      window.removeEventListener("mousemove", move);
+      hoverTargets.forEach((el) => {
+        el.removeEventListener("mouseenter", enter);
+        el.removeEventListener("mouseleave", leave);
+      });
+    };
+  }, []);
+
   return (
-    <motion.div
-      whileHover={{
-        y: -8,
-        scale: 1.03,
-        boxShadow: "0 12px 25px rgba(59,130,246,0.25)",
-      }}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="relative overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-lg flex flex-col transition-all duration-300"
-    >
-      {/* Gambar Project */}
-      <div className="relative w-full h-44 overflow-hidden rounded-t-2xl">
-        <motion.img
-          src={image}
-          alt={title}
-          className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
-          loading="lazy"
-        />
-      </div>
+    <>
+      {/* Particle Container */}
+      <div
+        id="cursor-particles"
+        className="pointer-events-none fixed inset-0 z-[99998]"
+      />
 
-      {/* Konten */}
-      <div className="flex flex-col flex-1 gap-3 p-5">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
-        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
-          {description}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mt-1">
-          {tech.map((t) => (
-            <span
-              key={t}
-              className="text-xs bg-blue-100/60 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-md font-medium"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-
-        {/* Tombol Link */}
-        <div className="mt-auto">
-          <motion.a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ x: 5 }}
-            className="inline-block text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline mt-3"
-          >
-            Lihat Proyek →
-          </motion.a>
-        </div>
-      </div>
-
-      {/* Efek Cahaya di Hover */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-      ></motion.div>
-    </motion.div>
+      {/* Main Cursor */}
+      <div
+        id="cursor-dot"
+        className={`pointer-events-none fixed top-0 left-0 z-[99999] rounded-full transition-all duration-150 ease-out 
+        ${
+          hovered
+            ? "w-9 h-9 bg-white/40 mix-blend-difference"
+            : "w-4 h-4 bg-white/80 mix-blend-difference"
+        }`}
+        style={{ transform: "translate(-50%, -50%)" }}
+      />
+    </>
   );
 }

@@ -1,21 +1,41 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { db } from "@/lib/firebase"; // ⬅️ IMPORT FIREBASE
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false); // NEW
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+    setLoading(true);
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+        createdAt: serverTimestamp(),
+      });
+
+      setSent(true);
+      setForm({ name: "", email: "", message: "" });
+
+      setTimeout(() => setSent(false), 4000);
+    } catch (error) {
+      console.error("Error mengirim:", error);
+      alert("Gagal mengirim pesan!");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -68,9 +88,10 @@ export default function ContactPage() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white rounded-md py-2 hover:bg-blue-700 transition"
+          disabled={loading}
+          className="bg-blue-600 text-white rounded-md py-2 hover:bg-blue-700 transition disabled:opacity-50"
         >
-          Kirim Pesan
+          {loading ? "Mengirim..." : "Kirim Pesan"}
         </button>
       </motion.form>
 

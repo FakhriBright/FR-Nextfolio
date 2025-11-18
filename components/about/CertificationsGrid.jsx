@@ -16,7 +16,7 @@ const certifications = [
     title: "UI/UX Design",
     issuer: "MySkill Indonesia",
     date: "2025",
-    logo: "/certificates/UIUX Design.jpg", // ✅ sesuai folder
+    logo: "/certificates/UIUX Design.jpg",
     desc: "Menyelesaikan pelatihan intensif UI/UX Design menggunakan Figma, termasuk riset pengguna, prototyping, dan usability testing.",
   },
   {
@@ -32,16 +32,16 @@ const certifications = [
     title: "Road Show FOSJABAR",
     issuer: "Forum OSIS Jawa Barat",
     date: "2024",
-    logo: "/certificates/Road Show Fosjabar.jpg", // ✅ .jpg bukan .png
-    desc: "Berpartisipasi aktif dalam kegiatan Road Show FOSJABAR untuk memperkuat jaringan kepemimpinan pelajar di Jawa Barat.",
+    logo: "/certificates/Road Show Fosjabar.jpg",
+    desc: "Berpartisipasi aktif dalam kegiatan Road Show FOSJABAR untuk memperkuat jaringan kepemimpinan pelajar Jawa Barat.",
   },
   {
     id: "publicspeaking",
     title: "Public Speaking",
     issuer: "MySkill Indonesia",
     date: "2025",
-    logo: "/certificates/Public Speaking.jpg", // ✅ .jpg
-    desc: "Mengembangkan kemampuan berbicara di depan umum dan membangun kepercayaan diri saat berkomunikasi di berbagai forum.",
+    logo: "/certificates/Public Speaking.jpg",
+    desc: "Meningkatkan kemampuan berbicara di depan umum dan membangun rasa percaya diri dalam berbagai situasi formal.",
   },
   {
     id: "paskibra",
@@ -49,7 +49,7 @@ const certifications = [
     issuer: "Kecamatan Ciampea",
     date: "2023",
     logo: "/certificates/Paskibra Kecamatan.jpeg",
-    desc: "Menjadi anggota pengibar bendera tingkat kecamatan, menunjukkan tanggung jawab dan kedisiplinan tinggi.",
+    desc: "Menjadi bagian dari pengibar bendera kecamatan, menunjukkan dedikasi dan disiplin tinggi.",
   },
   {
     id: "fosjabaronline",
@@ -57,23 +57,23 @@ const certifications = [
     issuer: "Forum OSIS Jawa Barat",
     date: "2024",
     logo: "/certificates/Fosjabar Temu Online.png",
-    desc: "Mengikuti kegiatan FOSJABAR secara daring, membahas isu kepemimpinan dan peran pelajar dalam masyarakat digital.",
+    desc: "Mengikuti kegiatan FOSJABAR secara daring yang membahas isu kepemudaan dan peran pelajar dalam masyarakat digital.",
   },
   {
     id: "excel",
     title: "DQLAB Basic Excel",
     issuer: "DQLab",
     date: "2024",
-   logo: "/certificates/dqlab_basic_excel.png",
-    desc: "Menyelesaikan modul dasar Microsoft Excel termasuk pengolahan data, fungsi, dan pembuatan visualisasi grafik.",
+    logo: "/certificates/dqlab_basic_excel.png",
+    desc: "Menguasai dasar Excel termasuk formula, pengolahan data, dan visualisasi grafik.",
   },
   {
     id: "datasci",
     title: "Data Science Explorer",
     issuer: "DQLab",
     date: "2024",
-    logo: "/certificates/Data Scince.png", // ✅ nama file dari folder
-    desc: "Belajar konsep dasar data science mencakup analisis data, statistik, dan eksplorasi dataset menggunakan Python.",
+    logo: "/certificates/Data Scince.png",
+    desc: "Dasar-dasar data science: analisis data, statistik, dan eksplorasi dataset menggunakan Python.",
   },
   {
     id: "cyber",
@@ -81,7 +81,7 @@ const certifications = [
     issuer: "MySkill Indonesia",
     date: "2025",
     logo: "/certificates/Cyber Security Course.png",
-    desc: "Memahami dasar keamanan digital, melindungi data pribadi, dan menerapkan etika berinternet yang aman.",
+    desc: "Belajar konsep keamanan digital, manajemen password, perlindungan data, dan etika keamanan online.",
   },
   {
     id: "advokasi",
@@ -89,7 +89,7 @@ const certifications = [
     issuer: "Dispora Kabupaten Bogor",
     date: "2024",
     logo: "/certificates/Advokasi Dispora.jpeg",
-    desc: "Berperan aktif dalam kegiatan advokasi pemuda tingkat kabupaten untuk pengembangan karakter dan kepemimpinan.",
+    desc: "Berperan aktif dalam program advokasi pemuda tingkat Kabupaten.",
   },
   {
     id: "ketuaosis",
@@ -97,23 +97,23 @@ const certifications = [
     issuer: "SMK TI BAZMA",
     date: "2024",
     logo: "/certificates/Ketua OSIS.png",
-    desc: "Menjabat sebagai Ketua OSIS, memimpin berbagai kegiatan sekolah dan mengkoordinasikan organisasi siswa.",
+    desc: "Memimpin organisasi siswa, mengelola program, dan menjadi representatif utama sekolah.",
   },
   {
     id: "libasta",
     title: "Sertifikat LIBASTA 2025",
     issuer: "SMK TI BAZMA",
     date: "2025",
-    logo: "/certificates/Sertifikat LIBASTA 2025.jpg", // ✅ .jpg bukan .png
-    desc: "Berpartisipasi aktif dalam kegiatan LIBASTA 2025 sebagai panitia pelaksana dan koordinator acara.",
+    logo: "/certificates/Sertifikat LIBASTA 2025.jpg",
+    desc: "Panitia dan peserta aktif LIBASTA 2025 dalam kegiatan sekolah dan pengembangan karakter.",
   },
   {
     id: "esq",
     title: "ESQ Leadership Center",
     issuer: "ESQ Indonesia",
     date: "2025",
-    logo: "/certificates/ESQ Leadership Center.jpg", // ✅ .jpg bukan .png
-    desc: "Menyelesaikan pelatihan kepemimpinan berbasis nilai integritas dan spiritualitas bersama ESQ Leadership Center.",
+    logo: "/certificates/ESQ Leadership Center.jpg",
+    desc: "Pelatihan kepemimpinan berbasis kecerdasan emosional & spiritual bersama ESQ Leadership Center.",
   },
 ];
 
@@ -127,7 +127,7 @@ export default function AboutCertification() {
       </h2>
 
       <div className="flex flex-col lg:flex-row gap-10">
-        {/* List Certificate */}
+        {/* List kiri */}
         <div className="flex-1 space-y-4 overflow-y-auto max-h-[500px] pr-2">
           {certifications.map((cert) => (
             <motion.div
@@ -158,7 +158,7 @@ export default function AboutCertification() {
           ))}
         </div>
 
-        {/* Detail Panel */}
+        {/* Detail kanan */}
         <div className="flex-1 relative">
           <AnimatePresence mode="wait">
             <motion.div
@@ -184,9 +184,33 @@ export default function AboutCertification() {
                   </p>
                 </div>
               </div>
+
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 {selected.desc}
               </p>
+
+              {/* Tombol CTA */}
+              <motion.a
+                href="/certificates"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="
+                  mt-6 w-full block text-center font-semibold px-6 py-3 rounded-xl
+                  bg-gradient-to-r from-blue-600 to-blue-700
+                  hover:from-blue-500 hover:to-blue-600
+                  text-white shadow-lg shadow-blue-500/30
+                  transition-all duration-300
+                "
+              >
+                Lihat Semua Sertifikat →
+              </motion.a>
+
+              {/* Glow animation */}
+              <motion.div
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-40 h-6 bg-blue-500/20 blur-xl rounded-full"
+                animate={{ opacity: [0.3, 0.7, 0.3] }}
+                transition={{ repeat: Infinity, duration: 3 }}
+              />
             </motion.div>
           </AnimatePresence>
         </div>
