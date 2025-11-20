@@ -51,3 +51,20 @@ html, body {
     transform: scale(0.4);
   }
 }
+
+
+/* =========================================================
+   GLOBAL SECTION SPACING (BIAR ABOUT RAPI)
+   ========================================================= */
+
+/* Spacing standar untuk semua section (64px atas + bawah) */
+.section {
+  padding-top: 4rem;   /* 64px */
+  padding-bottom: 4rem;
+}
+
+/* Versi lebih rapat (32px) jika ingin compact */
+.section-sm {
+  padding-top: 2rem;   /* 32px */
+  padding-bottom: 2rem;
+}
