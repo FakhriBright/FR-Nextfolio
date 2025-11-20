@@ -2,6 +2,7 @@
 import TransitionProvider from "@/components/TransitionProvider";
 import HeroSection from "@/components/about/HeroSection";
 import ProjectsShowcase from "@/components/about/ProjectsShowcase";
+import GalleryCarousel from "@/components/about/GalleryCarousel";
 import CertificationsGrid from "@/components/about/CertificationsGrid";
 import EducationCarousel from "@/components/about/EducationCarousel";
 import ContactSection from "@/components/about/ContactSection";
@@ -13,6 +14,7 @@ export default function AboutPage() {
         <HeroSection />
         <CertificationsGrid />
         <ProjectsShowcase />
+        <GalleryCarousel />
         <EducationCarousel />
         <ContactSection />
       </main>

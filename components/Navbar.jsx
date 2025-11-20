@@ -1,60 +1,104 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
-  const path = usePathname();
+  const pathname = usePathname();
+  const [theme, setTheme] = useState("dark");
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/certificates", label: "Certificates" }, // 🟢 Tambahan baru
-    { href: "/contact", label: "Contact" },
+  // Terapkan theme ke <html> (supaya Tailwind dark: berfungsi)
+  useEffect(() => {
+    if (theme === "dark") document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, [theme]);
+
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
+    { name: "Certificates", href: "/certificates" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-700 shadow-sm z-50 transition-all duration-300">
-      <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo / Judul */}
-        <motion.h1
-          whileHover={{ scale: 1.05 }}
-          className="font-bold text-lg dark:text-white tracking-wide"
-        >
-          <Link href="/">FR-Nextfolio</Link>
-        </motion.h1>
+    <nav className="backdrop-blur-xl bg-white/10 dark:bg-black/20 sticky top-0 z-50 border-b border-white/10 dark:border-white/5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* 🔥 Logo */}
+        <Link href="/" className="flex items-center">
+          <div className="h-10 w-10 flex items-center justify-center overflow-visible">
+            <img
+              src="/logo/FR.png"
+              alt="FR Logo"
+              className="w-10 h-10 object-contain scale-[2.5]" // 🔥 logo terlihat besar
+            />
+          </div>
+        </Link>
 
-        {/* Navigasi Utama */}
-        <div className="flex items-center gap-6">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <motion.span
-                whileHover={{ scale: 1.1 }}
-                className={`relative transition-colors duration-300 ${
-                  path === link.href
-                    ? "text-blue-600 dark:text-blue-400 font-semibold"
-                    : "text-gray-700 dark:text-gray-300"
-                } hover:text-blue-500 dark:hover:text-blue-400`}
+        {/* 🔹 NAVIGATION MENU */}
+        <div className="hidden md:flex gap-8">
+          {navItems.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative text-sm font-medium transition ${
+                  active
+                    ? "text-blue-500"
+                    : "text-gray-800 dark:text-gray-200 hover:text-blue-400"
+                }`}
               >
-                {link.label}
+                {item.name}
 
-                {/* Garis bawah animasi */}
-                {path === link.href && (
+                {active && (
                   <motion.div
-                    layoutId="underline"
-                    className="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-600 dark:bg-blue-400 rounded"
+                    layoutId="activeNav"
+                    className="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-500 rounded-full"
+                    transition={{ duration: 0.25 }}
                   />
                 )}
-              </motion.span>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
+        </div>
 
-          {/* Toggle Mode */}
-          <ThemeToggle />
+        {/* 🌗 Toggle Mode */}
+        <div>
+          <ThemeSwitch theme={theme} setTheme={setTheme} />
         </div>
       </div>
     </nav>
+  );
+}
+
+/* ----------------------------------------------------------
+   🌙 LIGHT / DARK MODE SWITCH (iOS STYLE)
+-----------------------------------------------------------*/
+function ThemeSwitch({ theme, setTheme }) {
+  const isLight = theme === "light";
+
+  return (
+    <button
+      onClick={() => setTheme(isLight ? "dark" : "light")}
+      className={`
+        w-16 h-8 flex items-center rounded-full p-1 transition-all duration-300
+        ${isLight ? "bg-yellow-400" : "bg-gray-700"}
+      `}
+    >
+      <motion.div
+        layout
+        transition={{ type: "spring", stiffness: 250, damping: 20 }}
+        animate={{
+          x: isLight ? 32 : 0, // Geser kanan/kiri
+        }}
+        className={`
+          w-6 h-6 rounded-full flex items-center justify-center shadow-md text-xs
+          ${isLight ? "bg-white text-yellow-600" : "bg-black text-white"}
+        `}
+      >
+        {isLight ? "☀️" : "🌙"}
+      </motion.div>
+    </button>
   );
 }

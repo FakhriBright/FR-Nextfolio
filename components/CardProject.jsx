@@ -1,81 +1,43 @@
-"use client";
-import { useEffect, useState } from "react";
+import { ExternalLink } from "lucide-react";
 
-export default function CursorEffect() {
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    const cursor = document.getElementById("cursor-dot");
-    const container = document.getElementById("cursor-particles");
-
-    // === Move Cursor ===
-    const move = (e) => {
-      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-
-      // Random particle burst
-      for (let i = 0; i < 6; i++) {
-        const p = document.createElement("div");
-        p.className = "cursor-particle";
-
-        const size = Math.random() * 6 + 3;
-        const angle = Math.random() * 2 * Math.PI;
-        const speed = Math.random() * 20 + 8;
-
-        const dx = Math.cos(angle) * speed;
-        const dy = Math.sin(angle) * speed;
-
-        p.style.width = `${size}px`;
-        p.style.height = `${size}px`;
-        p.style.left = e.clientX + "px";
-        p.style.top = e.clientY + "px";
-        p.style.transform = `translate(${dx}px, ${dy}px)`;
-
-        container.appendChild(p);
-
-        setTimeout(() => p.remove(), 350);
-      }
-    };
-
-    window.addEventListener("mousemove", move);
-
-    // Detect hover
-    const hoverTargets = document.querySelectorAll("a, button, .hover-target");
-    const enter = () => setHovered(true);
-    const leave = () => setHovered(false);
-
-    hoverTargets.forEach((el) => {
-      el.addEventListener("mouseenter", enter);
-      el.addEventListener("mouseleave", leave);
-    });
-
-    return () => {
-      window.removeEventListener("mousemove", move);
-      hoverTargets.forEach((el) => {
-        el.removeEventListener("mouseenter", enter);
-        el.removeEventListener("mouseleave", leave);
-      });
-    };
-  }, []);
-
+export default function CardProject({ title, description, tech, image, link }) {
   return (
-    <>
-      {/* Particle Container */}
-      <div
-        id="cursor-particles"
-        className="pointer-events-none fixed inset-0 z-[99998]"
-      />
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+      {/* Thumbnail */}
+      <img src={image} alt={title} className="w-full h-40 object-cover" />
 
-      {/* Main Cursor */}
-      <div
-        id="cursor-dot"
-        className={`pointer-events-none fixed top-0 left-0 z-[99999] rounded-full transition-all duration-150 ease-out 
-        ${
-          hovered
-            ? "w-9 h-9 bg-white/40 mix-blend-difference"
-            : "w-4 h-4 bg-white/80 mix-blend-difference"
-        }`}
-        style={{ transform: "translate(-50%, -50%)" }}
-      />
-    </>
+      <div className="p-4">
+        {/* Title */}
+        <h3 className="font-bold dark:text-white">{title}</h3>
+
+        {/* Description */}
+        <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+          {description}
+        </p>
+
+        {/* Tech badges */}
+        <div className="flex gap-2 flex-wrap mt-2">
+          {tech.map((t, i) => (
+            <span
+              key={i}
+              className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Lihat Project (small link) */}
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm font-medium mt-4 hover:underline"
+        >
+          Lihat Project
+          <ExternalLink size={14} />
+        </a>
+      </div>
+    </div>
   );
 }
