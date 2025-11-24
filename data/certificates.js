@@ -1,19 +1,19 @@
 export const certificates = [
-  {
+{
     id: 1,
-    title: "UX Writing",
-    issuer: "Sertifikat UX Writing",
-    date: "2025",
-    image: "/certificates/UX Writing.png",
-    link: "/certificates/UX Writing.png",
-  },
-  {
-    id: 2,
     title: "UI/UX Design",
     issuer: "Sertifikat UI/UX Design",
     date: "2025",
     image: "/certificates/UIUX Design.jpg",
     link: "/certificates/UIUX Design.jpg",
+  },
+    {
+    id: 2,
+    title: "MANSION 3",
+    issuer: "Jabodetabek Competition",
+    date: "2025",
+    image: "/certificates/mansion3.png",
+    link: "/certificates/mansion3.png",
   },
   {
     id: 3,
@@ -111,5 +111,13 @@ export const certificates = [
     date: "2025",
     image: "/certificates/ESQ Leadership Center.jpg",
     link: "/certificates/ESQ Leadership Center.jpg",
+  },
+   {
+    id: 15,
+    title: "UX Writing",
+    issuer: "Sertifikat UX Writing",
+    date: "2025",
+    image: "/certificates/UX Writing.png",
+    link: "/certificates/UX Writing.png",
   },
 ];

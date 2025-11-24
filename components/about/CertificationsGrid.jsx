@@ -115,6 +115,14 @@ const certifications = [
     logo: "/certificates/ESQ Leadership Center.jpg",
     desc: "Pelatihan kepemimpinan berbasis kecerdasan emosional & spiritual bersama ESQ Leadership Center.",
   },
+  {
+    id: "Pidato",
+    title: "MANSION 3",
+    issuer: "SMAN 1 Leuwiliyang",
+    date: "2025",
+    logo: "/certificates/mansion3.png",
+    desc: "Ajang perlombaan tingkat JABODETABEK & Banten.",
+  },
 ];
 
 export default function AboutCertification() {
