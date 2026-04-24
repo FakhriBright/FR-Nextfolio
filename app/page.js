@@ -30,30 +30,27 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl text-lg">
-              Seorang pelajar <span className="font-medium">SMK TI BAZMA</span>{" "}
-              jurusan
-              <span className="text-blue-600 dark:text-blue-400 font-semibold">
-                {" "}
-                Sistem Informasi, Jaringan, dan Aplikasi{" "}
-              </span>
-              yang fokus pada{" "}
-              <span className="font-semibold">UI/UX Design</span> dan
-              pengembangan website modern berbasis{" "}
-              <span className="font-semibold">React & Next.js</span>.
-            </p>
+           <p className="text-gray-600 dark:text-gray-300 max-w-2xl text-lg">
+  An Information Systems, Networking, and Applications student at
+  <span className="font-medium"> SMK TI BAZMA</span>, passionate about
+  <span className="font-semibold"> UI/UX Design</span> and modern web development,
+  specializing in building responsive and interactive interfaces using
+  <span className="font-semibold"> React & Next.js</span>, and developing
+  scalable web applications with
+  <span className="font-semibold"> Laravel</span>.
+</p>
 
             {/* CTA BUTTONS */}
             <div className="flex gap-4 pt-4">
-              <Link href="/about">
-                <motion.button
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 rounded-full bg-transparent border border-blue-500/70 text-blue-500 hover:bg-blue-500 hover:text-white transition font-medium"
-                >
-                  Documentation →
-                </motion.button>
-              </Link>
+            <a href="/cv/fakhri-cv.pdf" download>
+  <motion.button
+    whileHover={{ scale: 1.08 }}
+    whileTap={{ scale: 0.95 }}
+    className="px-6 py-3 rounded-full bg-transparent border border-blue-500/70 text-blue-500 hover:bg-blue-500 hover:text-white transition font-medium"
+  >
+    Download CV 
+  </motion.button>
+</a>
 
               <Link href="/about">
                 <motion.button

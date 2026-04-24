@@ -27,14 +27,18 @@ export default function HeroSection() {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
           Tentang Saya
         </h1>
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-          Saya <span className="font-semibold">Moh. Fakhri Rizkian</span>, pelajar 
-          <span className="font-semibold"> SMK TI BAZMA</span> jurusan 
-          <span className="text-blue-600 dark:text-blue-400 font-medium"> Sistem Informasi, Jaringan, dan Aplikasi (SIJA)</span>. 
-          Saya mendalami <span className="font-semibold">UI/UX Design</span> dan 
-          pengembangan website berbasis <span className="font-semibold">React dan Next.js</span>. 
-          Saya juga aktif dalam <span className="font-semibold">organisasi, event management</span>, dan berbagai proyek digital.
-        </p>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+  About Me
+</h1>
+<p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+  I am <span className="font-semibold">Moh. Fakhri Rizkian</span>, an Information
+  Systems, Networking, and Applications (SIJA) student at
+  <span className="font-semibold"> SMK TI BAZMA</span> with a strong interest in
+  <span className="font-semibold"> UI/UX Design</span> and modern web development
+  using <span className="font-semibold">React and Next.js</span>. I actively
+  participate in <span className="font-semibold">organizations, event management</span>,
+  and digital projects that enhance my collaboration, creativity, and problem-solving skills.
+</p>
 
         {/*  Animasi Skills */}
         <div className="relative w-full overflow-hidden py-3 mt-6">
