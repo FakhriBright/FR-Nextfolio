@@ -9,8 +9,10 @@ import "../styles/globals.css";
 export const metadata = {
   title: "FR-Nextfolio",
   description: "Portfolio by Moh. Fakhri Rizkian",
+  icons: {
+    icon: "/icon.png",
+  },
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
