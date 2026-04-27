@@ -5,7 +5,6 @@ import ProjectsShowcase from "@/components/about/ProjectsShowcase";
 import CertificationsGrid from "@/components/about/CertificationsGrid";
 import EducationCarousel from "@/components/about/EducationCarousel";
 import GalleryCarousel from "@/components/about/GalleryCarousel";
-import ContactForm from "@/components/ContactForm";
 
 export default function AboutPage() {
   return (
@@ -17,7 +16,6 @@ export default function AboutPage() {
         <GalleryCarousel/>
         <EducationCarousel />
       </main>
-      <ContactForm />
     </TransitionProvider>
   );
 }
