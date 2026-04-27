@@ -25,9 +25,6 @@ export default function HeroSection() {
         className="max-w-2xl space-y-6"
       >
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-          Tentang Saya
-        </h1>
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
   About Me
 </h1>
 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
