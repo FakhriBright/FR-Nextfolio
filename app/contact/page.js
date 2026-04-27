@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Send } from "lucide-react";
+import emailjs from "@emailjs/browser"; // ✅ pakai ini
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -20,18 +21,32 @@ export default function ContactPage() {
     setLoading(true);
 
     try {
+      // ✅ 1. Simpan ke Firebase
       await addDoc(collection(db, "messages"), {
         ...form,
         createdAt: serverTimestamp(),
       });
 
+      // ✅ 2. Kirim ke EmailJS
+      await emailjs.send(
+        "service_zq81pvk",
+        "template_zpk7bp8",
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        },
+        "d3MYihqkSLxK3jlLh"
+      );
+
+      
       setSent(true);
       setForm({ name: "", email: "", message: "" });
 
       setTimeout(() => setSent(false), 4000);
     } catch (error) {
-      console.error("Error:", error);
-      alert("Gagal mengirim pesan!");
+      console.log("ERROR:", error); // 🔥 penting buat debug
+      alert("Gagal mengirim ❌");
     }
 
     setLoading(false);
@@ -40,12 +55,10 @@ export default function ContactPage() {
   return (
     <main className="relative min-h-screen flex justify-center items-center py-20 px-6 overflow-hidden">
 
-      {/* BACKGROUND GRADIENT */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl opacity-40 pointer-events-none" />
 
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 relative z-10">
         
-        {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -66,13 +79,11 @@ export default function ContactPage() {
             <br />Dukung project kamu menjadi sesuatu yang <b>lebih profesional!</b>
           </p>
 
-          {/* Small badge */}
           <div className="mt-6 inline-block bg-blue-600 text-white px-4 py-1 rounded-full text-sm shadow-md">
             Fast Response ⚡
           </div>
         </motion.div>
 
-        {/* FORM */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 40 }}
