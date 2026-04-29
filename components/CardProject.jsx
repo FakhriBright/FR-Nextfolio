@@ -34,7 +34,7 @@ export default function CardProject({ title, description, tech, image, link }) {
           rel="noopener noreferrer"
           className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm font-medium mt-4 hover:underline"
         >
-          Lihat Project
+          Lihat Detail
           <ExternalLink size={14} />
         </a>
       </div>

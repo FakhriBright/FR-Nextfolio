@@ -13,7 +13,7 @@ const projects = [
   },
   {
     title: "Fakhri Store",
-    desc: "Website e-commerce sederhana dengan filter & keranjang.",
+    desc: "Website e-commerce sederhana dengan fitur filter dan keranjang.",
     image: "/projects/store.png",
     link: "/projects",
   },
@@ -25,14 +25,50 @@ const projects = [
   },
   {
     title: "UI Absensi Asrama",
-    desc: "Desain absensi asholat asrama.",
+    desc: "Desain UI absensi asrama untuk monitoring.",
     image: "/projects/loginbazma.png",
     link: "/projects",
   },
   {
-    title: "UI Register LEVEL",
-    desc: "Remake Website & Autentikasi @mail dengan Firebase.",
+    title: "Re-creation & Authentication",
+    desc: "Remake website & autentikasi email dengan Firebase.",
     image: "/projects/registerlevel.png",
+    link: "/projects",
+  },
+  {
+    title: "Aplikasi Cuaca",
+    desc: "Menampilkan cuaca real-time berdasarkan lokasi.",
+    image: "/projects/cuaca.png",
+    link: "/projects",
+  },
+  {
+    title: "Form Pengaduan",
+    desc: "UI form input dengan desain modern dan clean.",
+    image: "/projects/form.png",
+    link: "/projects",
+  },
+  {
+    title: "Dashboard Smart Lamp",
+    desc: "Kontrol lampu berbasis dashboard website.",
+    image: "/projects/dashboard-siot.png",
+    link: "/projects",
+  },
+  {
+    title: "Apps List",
+    desc: "Aplikasi catatan realtime sederhana.",
+    image: "/projects/todo-list.png",
+    link: "/projects",
+  },
+  {
+    title: "Web Portofolio (Next.js)",
+    desc: "Web profil dengan tampilan profesional modern.",
+    image: "/projects/profilee.png",
+    link: "/projects",
+  },
+  {
+    title: "Web Portofolio (HTML)",
+    desc: "Web profil sederhana berbasis HTML, CSS, JS.",
+    image: "/projects/profile.png",
     link: "/projects",
   },
 ];
