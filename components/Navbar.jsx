@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+
 export default function Navbar() {
   const pathname = usePathname();
   const [theme, setTheme] = useState("dark");
