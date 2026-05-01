@@ -24,12 +24,6 @@ const projects = [
     link: "/projects",
   },
   {
-    title: "UI Absensi Asrama",
-    desc: "Desain UI absensi asrama untuk monitoring.",
-    image: "/projects/loginbazma.png",
-    link: "/projects",
-  },
-  {
     title: "Re-creation & Authentication",
     desc: "Remake website & autentikasi email dengan Firebase.",
     image: "/projects/registerlevel.png",
@@ -47,6 +41,12 @@ const projects = [
     image: "/projects/form.png",
     link: "/projects",
   },
+    {
+    title: "Web Portofolio (Next.js)",
+    desc: "Web profil dengan tampilan profesional modern.",
+    image: "/projects/profilee.png",
+    link: "/projects",
+  },
   {
     title: "Dashboard Smart Lamp",
     desc: "Kontrol lampu berbasis dashboard website.",
@@ -57,12 +57,6 @@ const projects = [
     title: "Apps List",
     desc: "Aplikasi catatan realtime sederhana.",
     image: "/projects/todo-list.png",
-    link: "/projects",
-  },
-  {
-    title: "Web Portofolio (Next.js)",
-    desc: "Web profil dengan tampilan profesional modern.",
-    image: "/projects/profilee.png",
     link: "/projects",
   },
   {

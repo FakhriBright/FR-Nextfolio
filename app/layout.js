@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import CursorEffect from "@/components/CursorEffect";
-import FloatingNav from "@/components/FloatingNav";   // ⬅️ Tambahkan ini
+import FloatingNav from "@/components/FloatingNav";   
 
 import "../styles/globals.css";
 
