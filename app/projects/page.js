@@ -123,9 +123,7 @@ export default function ProjectsPage() {
       </nav>
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-14">
-        {/* Header Title */}
-<div className="mb-6 pt-4">
+<main className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-14"><div className="mb-6 pt-4">
   <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
     Projects
   </h1>
