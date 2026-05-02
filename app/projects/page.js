@@ -122,12 +122,12 @@ export default function ProjectsPage() {
         </button>
       </nav>
 
-      {/* Main Content */}
-<main className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-14"><div className="mb-6 pt-4">
-  <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-    Projects
-  </h1>
-</div>
+<main className="relative z-10 max-w-7xl mx-auto px-6 pt-3 pb-8">
+  <div className="mb-3 pt-1">
+    <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+      Projects
+    </h1>
+  </div>
 
         {/* Search & Filter */}
         <div className="mb-6">
