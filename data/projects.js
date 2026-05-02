@@ -139,4 +139,28 @@ export const projects = [
     image: "/projects/work-hard.png",
     link: "/projects/work-hard.png",
   },
+  {
+  id: 15,
+  title: "Cooking Timer IoT",
+  description:"Smart cooking timer berbasis Arduino untuk monitoring durasi memasak.",
+  category: "IoT & Hardware",
+  tech: ["Arduino", "C++", "LCD I2C",],
+  mediaType: "carousel",
+  images: [
+    "/projects/iot/timer1.jpeg",
+    "/projects/iot/timer2.jpeg",
+    "/projects/iot/timer3.jpeg",
+  ],
+  link: "/projects/iot/timer1.jpeg",
+},
+{
+  id: 16,
+  title: "Mini Game Arduino",
+  description:"Mini game berbasis Arduino Uno dengan input button dan display LCD.",
+  category: "IoT & Hardware",
+  tech: ["Arduino", "C++", "LCD I2C"],
+  mediaType: "video",
+  video: "/projects/iot/minigame.mp4",
+  link: "/projects/iot/minigame.mp4",
+},
 ];
