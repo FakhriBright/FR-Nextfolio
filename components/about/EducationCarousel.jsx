@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 const items = [
   "SMK TI BAZMA — Vocational High School (2023 - Now)",
-  "MTs Mahaduth Tholabah — Islamic Junior High School (2019 - 2022)",
-  "SDN Mangunsaren 02 — Elementary School (2013 - 2019)",
 ];
 
 export default function EducationCarousel() {
