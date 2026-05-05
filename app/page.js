@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import TransitionProvider from "@/components/TransitionProvider";
 import Link from "next/link";
 import { ScrollProgress } from "@/components/ui/scroll-progress"
+import DownloadCV from "@/components/DownloadCV";
 
 export default function HomePage() {
   return (
@@ -43,15 +44,7 @@ export default function HomePage() {
 
             {/* CTA BUTTONS */}
             <div className="flex gap-4 pt-4">
-            <a href="/cv/fakhri-cv.pdf" download>
-  <motion.button
-    whileHover={{ scale: 1.08 }}
-    whileTap={{ scale: 0.95 }}
-    className="px-6 py-3 rounded-full bg-transparent border border-blue-500/70 text-blue-500 hover:bg-blue-500 hover:text-white transition font-medium"
-  >
-    Download CV 
-  </motion.button>
-</a>
+              <DownloadCV />
 
               <Link href="/about">
                 <motion.button
