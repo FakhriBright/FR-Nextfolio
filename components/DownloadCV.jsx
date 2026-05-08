@@ -25,14 +25,6 @@ export default function DownloadCV() {
           >
             CV Web Developer
           </a>
-
-          <a
-            href="/cv/event-organizer-cv.pdf"
-            download
-            className="block px-4 py-3 text-sm text-white hover:bg-slate-800 transition"
-          >
-            CV Event Organizer
-          </a>
         </div>
       )}
     </div>
