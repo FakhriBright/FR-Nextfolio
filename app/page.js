@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import TransitionProvider from "@/components/TransitionProvider";
 import Link from "next/link";
-import { ScrollProgress } from "@/components/ui/scroll-progress"
 import DownloadCV from "@/components/DownloadCV";
 
 export default function HomePage() {

@@ -86,21 +86,21 @@ export default function CardProject({
             </div>
           </>
         ) : mediaType === "video" ? (
-          <video
-            src={video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          />
+     <video
+  src={video}
+  controls
+  preload="metadata"
+  className="w-full h-full object-cover"
+/>
         ) : (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-          />
+<Image
+  src={image}
+  alt={title}
+  fill
+  loading="lazy"
+  quality={75}
+  className="object-cover"
+/>
         )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />

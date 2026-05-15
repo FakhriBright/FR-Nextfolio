@@ -1,5 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
-module.exports = nextConfig
+
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+
+  compress: true,
+
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+
+  poweredByHeader: false,
+};
+
+module.exports = nextConfig;
