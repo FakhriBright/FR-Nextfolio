@@ -9,7 +9,6 @@ const nextConfig = {
   compress: true,
 
   experimental: {
-    optimizeCss: true,
     scrollRestoration: true,
   },
 
