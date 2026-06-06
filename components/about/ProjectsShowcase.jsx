@@ -41,7 +41,7 @@ const projects = [
     image: "/projects/form.png",
     link: "/projects",
   },
-    {
+  {
     title: "Web Portofolio (Next.js)",
     desc: "Web profil dengan tampilan profesional modern.",
     image: "/projects/profilee.png",
@@ -80,58 +80,67 @@ export default function ProjectsShowcase() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto py-20 px-6 overflow-hidden">
-      <div className="grid lg:grid-cols-2 gap-14 items-center">
-        {/* LEFT CONTENT PANEL */}
+    <section className="max-w-7xl mx-auto py-16 px-6 overflow-hidden border-t border-border/30">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* LEFT CONTENT PANEL (5 cols) */}
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-5 space-y-6"
         >
-          <p className="uppercase tracking-widest text-sm text-gray-500 dark:text-gray-400">
-            Project Showcase
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-[9px] font-mono tracking-widest text-primary uppercase">[ PROJECT {index + 1} OF {total} ]</span>
+          </div>
 
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-foreground leading-[0.9] tracking-tighter uppercase">
+            Featured
+            <br />
+            <span className="font-serif italic font-light lowercase text-primary">creations</span>
+          </h2>
+
+          <h3 className="text-lg md:text-xl font-heading font-semibold text-foreground tracking-wide">
             {projects[index].title}
-          </h1>
+          </h3>
 
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
+          <p className="text-muted-foreground leading-relaxed font-sans text-sm md:text-base">
             {projects[index].desc}
           </p>
 
           {/* NAV BUTTONS */}
-          <div className="flex gap-4 mt-6">
+          <div className="flex gap-3 pt-2">
             <button
               onClick={prev}
-              className="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 transition"
+              className="p-3 rounded-full border border-border bg-card/40 text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
+              aria-label="Previous project"
             >
-              <ArrowLeft />
+              <ArrowLeft size={16} />
             </button>
             <button
               onClick={next}
-              className="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 transition"
+              className="p-3 rounded-full border border-border bg-card/40 text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
+              aria-label="Next project"
             >
-              <ArrowRight />
+              <ArrowRight size={16} />
             </button>
           </div>
         </motion.div>
 
-        {/* RIGHT SIDE — FLOATING STACK + CARD WRAPPER */}
-        <div className="relative h-[480px] flex items-center justify-center">
+        {/* RIGHT SIDE — FLOATING STACK + CARD WRAPPER (7 cols) */}
+        <div className="lg:col-span-7 relative h-[400px] flex items-center justify-center">
           {/* LAYER 3 */}
           <motion.img
             key={"b-" + index}
             src={projects[(index + 2) % total].image}
-            className="absolute w-40 h-40 object-cover rounded-xl opacity-40 blur-[1px]"
-            initial={{ y: 80, scale: 0.8 }}
-            animate={{ y: 100, scale: 0.8 }}
+            className="absolute w-44 h-44 object-cover border border-border bg-card/10 opacity-15 blur-[1px] filter grayscale pointer-events-none rounded-none"
+            initial={{ y: 50, x: 100, scale: 0.8 }}
+            animate={{ y: 70, x: 100, scale: 0.8 }}
             transition={{
-              duration: 1.2,
+              duration: 2,
               repeat: Infinity,
               repeatType: "reverse",
+              ease: "easeInOut"
             }}
           />
 
@@ -139,47 +148,50 @@ export default function ProjectsShowcase() {
           <motion.img
             key={"m-" + index}
             src={projects[(index + 1) % total].image}
-            className="absolute w-56 h-56 object-cover rounded-xl opacity-70"
-            initial={{ y: 30 }}
-            animate={{ y: 50 }}
+            className="absolute w-56 h-56 object-cover border border-border bg-card/20 opacity-35 filter grayscale pointer-events-none rounded-none"
+            initial={{ y: -20, x: -90, scale: 0.9 }}
+            animate={{ y: 0, x: -90, scale: 0.9 }}
             transition={{
-              duration: 1.5,
+              duration: 2.5,
               repeat: Infinity,
               repeatType: "reverse",
+              ease: "easeInOut"
             }}
           />
 
-          {/* 🎯 MAIN CARD (seperti versi lama, ada bingkai + tombol bawah) */}
+          {/* 🎯 MAIN CARD */}
           <motion.div
             key={"card-" + index}
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-80 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-80 bg-card/40 backdrop-blur-md border border-border/80 p-2.5 pb-6 shadow-2xl overflow-hidden group border-t-2 border-l-2 border-primary/20 rounded-none transition-all duration-300 hover:border-primary/40"
           >
             {/* MAIN IMAGE */}
-            <img
-              src={projects[index].image}
-              alt={projects[index].title}
-              className="w-full h-56 object-cover"
-            />
+            <div className="relative overflow-hidden h-52 bg-background border border-border/40">
+              <img
+                src={projects[index].image}
+                alt={projects[index].title}
+                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-out hover:scale-[1.03]"
+              />
+            </div>
 
             {/* TEXT + BUTTON */}
-            <div className="p-5">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="pt-4 px-1">
+              <h3 className="text-lg font-bold font-heading text-foreground mb-1">
                 {projects[index].title}
               </h3>
 
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              <p className="text-xs text-muted-foreground font-sans leading-relaxed min-h-[36px]">
                 {projects[index].desc}
               </p>
 
               {/* BUTTON → KE PROJECTS PAGE */}
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 mt-4 text-blue-600 dark:text-blue-400 font-medium hover:underline"
+                className="inline-flex items-center gap-1.5 mt-4 text-[10px] font-bold tracking-widest uppercase text-primary hover:text-foreground transition duration-300"
               >
-                Lihat Semua <ExternalLink size={16} />
+                Explore Showcase <ExternalLink size={11} />
               </Link>
             </div>
           </motion.div>

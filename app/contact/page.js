@@ -1,10 +1,11 @@
 "use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Send } from "lucide-react";
-import emailjs from "@emailjs/browser"; // ✅ pakai ini
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -21,13 +22,13 @@ export default function ContactPage() {
     setLoading(true);
 
     try {
-      // ✅ 1. Simpan ke Firebase
+      // 1. Save to Firebase Firestore
       await addDoc(collection(db, "messages"), {
         ...form,
         createdAt: serverTimestamp(),
       });
 
-      // ✅ 2. Kirim ke EmailJS
+      // 2. Send via EmailJS
       await emailjs.send(
         "service_zq81pvk",
         "template_zpk7bp8",
@@ -39,13 +40,12 @@ export default function ContactPage() {
         "d3MYihqkSLxK3jlLh"
       );
 
-      
       setSent(true);
       setForm({ name: "", email: "", message: "" });
 
       setTimeout(() => setSent(false), 4000);
     } catch (error) {
-      console.log("ERROR:", error); // 🔥 penting buat debug
+      console.log("ERROR:", error);
       alert("Gagal mengirim ❌");
     }
 
@@ -53,52 +53,60 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="relative min-h-screen flex justify-center items-center py-20 px-6 overflow-hidden">
+    <main className="relative min-h-[90vh] flex justify-center items-center py-16 md:py-24 px-6 overflow-hidden">
+      {/* Background Solar Flare Glow */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute w-[500px] h-[500px] bg-primary/3 rounded-full blur-[130px] top-1/4 left-1/4" />
+        <div className="absolute w-[500px] h-[500px] bg-accent/3 rounded-full blur-[130px] bottom-1/4 right-1/4" />
+      </div>
 
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl opacity-40 pointer-events-none" />
-
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 relative z-10">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 relative z-10">
         
+        {/* Left Info Column */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col justify-center"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col justify-center space-y-6"
         >
-          <p className="text-sm tracking-widest font-semibold text-blue-500 dark:text-blue-400">
-            HUBUNGI SAYA
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-[9px] font-mono tracking-widest text-primary uppercase">[ CONTACT // COLLABORATION ]</span>
+          </div>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mt-3">
-            Punya <span className="text-blue-600">Pertanyaan</span>?  
-            Atau Mau Berkolaborasi?
+          <h1 className="text-5xl md:text-7xl font-bold font-display text-foreground leading-[0.9] tracking-tighter uppercase">
+            Let's start
+            <br />
+            <span className="font-serif italic font-light lowercase text-primary">a project</span>
           </h1>
 
-          <p className="mt-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-            Silakan kirimkan pesanmu. Aku akan menjawab secepat mungkin.  
-            <br />Dukung project kamu menjadi sesuatu yang <b>lebih profesional!</b>
+          <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-sans max-w-md">
+            Feel free to send a message. Whether you have an idea, want to collaborate on a digital product, or just say hello, I'll get back to you as soon as possible.
           </p>
 
-          <div className="mt-6 inline-block bg-blue-600 text-white px-4 py-1 rounded-full text-sm shadow-md">
-            Fast Response ⚡
+          <div className="mt-4 w-fit inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-3 py-1.5 text-[9px] font-heading font-bold uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            Fast Response Enabled ⚡
           </div>
         </motion.div>
 
+        {/* Right Form Column */}
         <motion.form
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="backdrop-blur-xl bg-white/20 dark:bg-black/20 border border-white/20 dark:border-white/10 shadow-2xl p-8 rounded-3xl flex flex-col gap-5"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="backdrop-blur-md bg-card/25 border border-border/80 p-8 flex flex-col gap-6 relative border-t-2 border-l-2 border-primary/20 rounded-none shadow-2xl"
         >
+          <div className="absolute inset-0 bg-primary/[0.01] pointer-events-none" />
+          
           <input
             type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
-            placeholder="Nama Lengkap"
+            placeholder="Full Name"
             required
-            className="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-gray-900/50 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none transition"
+            className="w-full px-4 py-3.5 bg-background/40 border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans rounded-none text-sm"
           />
 
           <input
@@ -106,37 +114,37 @@ export default function ContactPage() {
             name="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="Alamat Email"
+            placeholder="Email Address"
             required
-            className="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-gray-900/50 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none transition"
+            className="w-full px-4 py-3.5 bg-background/40 border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans rounded-none text-sm"
           />
 
           <textarea
             name="message"
             value={form.message}
             onChange={handleChange}
-            placeholder="Pesan Anda..."
-            rows="4"
+            placeholder="Your Message..."
+            rows="5"
             required
-            className="w-full px-4 py-3 rounded-xl bg-white/70 dark:bg-gray-900/50 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 outline-none transition"
+            className="w-full px-4 py-3.5 bg-background/40 border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans resize-none rounded-none text-sm"
           ></textarea>
 
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition disabled:opacity-50 shadow-lg active:scale-95"
+            className="flex items-center justify-center gap-2 border border-primary/30 text-primary hover:text-primary-foreground hover:bg-primary py-3.5 transition-all duration-300 font-heading text-xs font-bold tracking-widest uppercase disabled:opacity-50 active:scale-98"
           >
-            {loading ? "Mengirim..." : "Kirim Pesan"}
-            <Send size={18} />
+            {loading ? "Sending..." : "Send Message"}
+            <Send size={14} />
           </button>
 
           {sent && (
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-green-500 text-center font-semibold"
+              className="text-primary text-center font-heading text-xs uppercase tracking-widest font-bold"
             >
-              Pesan berhasil dikirim! ✔
+              Message sent successfully! ✔
             </motion.p>
           )}
         </motion.form>

@@ -4,27 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const techColors = {
-  React: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-  "Next.js": "bg-white/10 text-white border-white/20",
-  Tailwind: "bg-sky-500/10 text-sky-400 border-sky-500/20",
-  Firebase: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  HTML: "bg-orange-500/10 text-orange-400 border-orange-500/20",
-  CSS: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  JS: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
-  MQTT: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-  Arduino: "bg-green-500/10 text-green-400 border-green-500/20",
-  "C++": "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
-  LCD: "bg-pink-500/10 text-pink-400 border-pink-500/20",
-  "Adobe Photoshop":
-    "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  "Public API Demo":
-    "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-  LocalStorage: "bg-gray-500/10 text-gray-400 border-gray-500/20",
-  "Framer Motion":
-    "bg-violet-500/10 text-violet-400 border-violet-500/20",
-};
-
 export default function CardProject({
   title,
   description,
@@ -51,34 +30,36 @@ export default function CardProject({
   return (
     <div
       className="
-        group rounded-2xl overflow-hidden
-        border border-white/10
-        bg-white/[0.03]
-        backdrop-blur-xl
-        hover:border-blue-400/30
-        transition-all duration-300
-        hover:-translate-y-1
+        group rounded-none overflow-hidden
+        border border-border/85
+        bg-card/30
+        backdrop-blur-md
+        hover:border-primary/45
+        transition-all duration-500
+        hover:shadow-xl hover:shadow-primary/[0.02]
+        flex flex-col h-full border-t-2 border-l-2 border-primary/10
       "
     >
-      {/* Media */}
-      <div className="relative w-full h-52 bg-black/30">
+      {/* Media Container */}
+      <div className="relative w-full h-52 bg-background overflow-hidden border-b border-border/40">
         {mediaType === "carousel" ? (
           <>
             <Image
               src={images[currentSlide]}
               alt={title}
               fill
-              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]"
             />
 
             {/* dots */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
               {images.map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${
+                  className={`w-1.5 h-1.5 transition-all duration-300 rounded-none ${
                     i === currentSlide
-                      ? "bg-white"
+                      ? "bg-primary w-3.5"
                       : "bg-white/40"
                   }`}
                 />
@@ -86,53 +67,58 @@ export default function CardProject({
             </div>
           </>
         ) : mediaType === "video" ? (
-     <video
-  src={video}
-  controls
-  preload="metadata"
-  className="w-full h-full object-cover"
-/>
+          <video
+            src={video}
+            controls
+            preload="metadata"
+            className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
+          />
         ) : (
-<Image
-  src={image}
-  alt={title}
-  fill
-  loading="lazy"
-  quality={75}
-  className="object-cover"
-/>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            loading="lazy"
+            quality={75}
+            className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-[1.03]"
+          />
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        <p className="text-xs font-semibold tracking-widest uppercase text-blue-400 mb-3">
-          {category}
-        </p>
-
-        <h3 className="text-2xl font-bold text-white mb-3 leading-tight">
-          {title}
-        </h3>
-
-        <p className="text-sm text-gray-400 leading-7 mb-5 min-h-[72px]">
-          {description}
-        </p>
-
-        {/* Tech stack */}
-        <div className="flex flex-wrap gap-2 mb-5">
-          {tech?.map((item, i) => (
-            <span
-              key={i}
-              className={`text-xs px-3 py-1 rounded-full border ${
-                techColors[item] ||
-                "bg-gray-500/10 text-gray-300 border-gray-500/20"
-              }`}
-            >
-              {item}
+      <div className="p-6 flex flex-col flex-1 justify-between">
+        <div>
+          <div className="flex items-center justify-between gap-4 mb-2">
+            <span className="text-[9px] uppercase font-bold tracking-widest text-primary font-heading">
+              {category}
             </span>
-          ))}
+            <span className="text-[8px] font-mono text-muted-foreground">
+              [ CASE STUDY ]
+            </span>
+          </div>
+
+          <h3 className="text-xl font-bold font-heading text-foreground mb-3 leading-tight group-hover:text-primary transition duration-300">
+            {title}
+          </h3>
+
+          <p className="text-sm text-muted-foreground font-sans leading-relaxed mb-5 min-h-[72px]">
+            {description}
+          </p>
+
+          {/* Tech stack */}
+          <div className="flex flex-wrap gap-1.5 mb-6">
+            {tech?.map((item, i) => (
+              <span
+                key={i}
+                className="text-[9px] px-2.5 py-1 bg-card/60 text-muted-foreground border border-border/80 hover:border-primary/40 hover:text-primary transition duration-300 uppercase tracking-wider font-bold"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Button */}
@@ -141,10 +127,9 @@ export default function CardProject({
           target="_blank"
           className="
             block w-full text-center
-            bg-blue-600 hover:bg-blue-500
-            text-white text-sm font-medium
-            py-3 rounded-xl
-            transition-all duration-300
+            border border-primary/30 text-primary hover:text-primary-foreground hover:bg-primary
+            text-xs font-heading font-bold tracking-widest uppercase
+            py-3 transition-all duration-300
           "
         >
           View Project →

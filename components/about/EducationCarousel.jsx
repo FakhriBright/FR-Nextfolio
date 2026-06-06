@@ -1,37 +1,33 @@
 "use client";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-
-const items = [
-  "SMK TI BAZMA — Vocational High School (2023 - Now)",
-];
 
 export default function EducationCarousel() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % items.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="text-center">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Education 
+    <section className="max-w-4xl mx-auto py-12 text-center">
+      <h2 className="text-3xl md:text-5xl font-bold font-display text-foreground mb-10 uppercase tracking-tighter">
+        Education
       </h2>
-      <div className="h-16 overflow-hidden flex items-center justify-center">
-        <motion.p
-          key={index}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -50, opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-gray-700 dark:text-gray-300 font-medium"
-        >
-          {items[index]}
-        </motion.p>
+      <div className="border border-border bg-card/25 backdrop-blur-md rounded-none p-8 shadow-xl max-w-2xl mx-auto border-t-2 border-l-2 border-primary/20 relative">
+        <div className="absolute top-4 left-6 text-[8px] uppercase font-bold tracking-[0.2em] text-muted-foreground">
+          [ Academic Timeline ]
+        </div>
+        <div className="absolute bottom-4 right-6 text-[8px] uppercase font-bold tracking-[0.2em] text-muted-foreground">
+          Active Student
+        </div>
+        
+        <div className="space-y-4 pt-4">
+          <span className="text-[10px] uppercase font-bold tracking-widest text-primary">SMK TI BAZMA</span>
+          <h3 className="text-xl md:text-2xl font-bold font-heading text-foreground">
+            Vocational High School
+          </h3>
+          <p className="text-sm text-muted-foreground tracking-wide font-sans max-w-md mx-auto leading-relaxed">
+            Information Systems, Networking, and Applications (SIJA) Program. Focus on modern full-stack web architectures, UI/UX interaction design, networks, and cloud deployments.
+          </p>
+          <div className="pt-4 flex items-center justify-center gap-2">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+            <span className="text-[9px] font-mono tracking-widest text-muted-foreground uppercase">[ 2023 — Present ]</span>
+          </div>
+        </div>
       </div>
     </section>
   );

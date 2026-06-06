@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const certifications = [
   {
@@ -129,96 +130,99 @@ export default function AboutCertification() {
   const [selected, setSelected] = useState(certifications[0]);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-        Certificate & Experience
+    <section className="max-w-7xl mx-auto px-6 py-12">
+      <h2 className="text-3xl md:text-5xl font-bold font-display text-foreground mb-12 uppercase tracking-tighter">
+        Credentials <span className="font-serif italic font-light lowercase text-primary">&</span> Achievements
       </h2>
 
-      <div className="flex flex-col lg:flex-row gap-10">
-        {/* List kiri */}
-        <div className="flex-1 space-y-4 overflow-y-auto max-h-[500px] pr-2">
-          {certifications.map((cert) => (
-            <motion.div
-              key={cert.id}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setSelected(cert)}
-              className={`cursor-pointer border rounded-xl p-4 flex items-center gap-4 transition-all duration-300 ${
-                selected.id === cert.id
-                  ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
-                  : "border-gray-200 dark:border-gray-700 hover:border-blue-400"
-              }`}
-            >
-              <img
-                src={cert.logo}
-                alt={cert.title}
-                className="w-12 h-12 object-cover rounded-lg"
-              />
-              <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
-                  {cert.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {cert.issuer} • {cert.date}
-                </p>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* List kiri (7 cols) */}
+        <div className="lg:col-span-7 space-y-1 overflow-y-auto max-h-[550px] pr-4 scrollbar-thin">
+          {certifications.map((cert) => {
+            const active = selected.id === cert.id;
+            return (
+              <div
+                key={cert.id}
+                onClick={() => setSelected(cert)}
+                className={`cursor-pointer py-4 px-2 flex items-center justify-between border-b border-border/40 transition-all duration-300 group ${
+                  active ? "border-b-primary bg-primary/[0.02]" : "hover:border-b-foreground/45 hover:bg-secondary/[0.05]"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-9 h-9 rounded-none border border-border/70 overflow-hidden bg-card flex-shrink-0 flex items-center justify-center">
+                    <img
+                      src={cert.logo}
+                      alt={cert.title}
+                      className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition duration-300"
+                    />
+                  </div>
+                  <div>
+                    <h3 className={`font-semibold font-heading transition-all duration-300 ${
+                      active 
+                        ? "text-primary font-serif italic text-base md:text-lg tracking-wide" 
+                        : "text-foreground group-hover:text-primary text-sm md:text-base"
+                    }`}>
+                      {cert.title}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-0.5">
+                      {cert.issuer}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] font-mono text-muted-foreground tracking-wider">{cert.date}</span>
+                  {active && (
+                    <span className="text-primary text-xs font-bold font-mono">●</span>
+                  )}
+                </div>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Detail kanan */}
-        <div className="flex-1 relative">
+        {/* Detail kanan (5 cols) */}
+        <div className="lg:col-span-5 relative lg:sticky lg:top-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={selected.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 border border-gray-100 dark:border-gray-700"
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="border border-border/80 bg-card/25 backdrop-blur-md rounded-none p-6 shadow-xl relative border-t-2 border-l-2 border-primary/20"
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="relative group overflow-hidden border border-border bg-background mb-6">
                 <img
                   src={selected.logo}
                   alt={selected.title}
-                  className="w-16 h-16 object-cover rounded-lg"
+                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
-                <div>
-                  <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {selected.title}
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {selected.issuer} • {selected.date}
-                  </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-[9px] uppercase font-bold tracking-widest text-primary">{selected.issuer}</span>
+                  <span className="text-[9px] uppercase font-mono tracking-widest text-muted-foreground">[ {selected.date} ]</span>
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-bold font-heading text-foreground">
+                  {selected.title}
+                </h3>
+
+                <p className="text-sm text-muted-foreground leading-relaxed font-sans pt-2 border-t border-border/30">
+                  {selected.desc}
+                </p>
+
+                <div className="pt-4">
+                  <Link href="/certificates" className="block text-center border border-primary/30 text-primary hover:text-primary-foreground hover:bg-primary py-3 transition-all duration-300 font-heading text-xs font-bold tracking-widest uppercase">
+                    View All Credentials →
+                  </Link>
                 </div>
               </div>
 
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {selected.desc}
-              </p>
-
-              {/* Tombol CTA */}
-              <motion.a
-                href="/certificates"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="
-                  mt-6 w-full block text-center font-semibold px-6 py-3 rounded-xl
-                  bg-gradient-to-r from-blue-600 to-blue-700
-                  hover:from-blue-500 hover:to-blue-600
-                  text-white shadow-lg shadow-blue-500/30
-                  transition-all duration-300
-                "
-              >
-                Lihat Semua Sertifikat →
-              </motion.a>
-
-              {/* Glow animation */}
-              <motion.div
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-40 h-6 bg-blue-500/20 blur-xl rounded-full"
-                animate={{ opacity: [0.3, 0.7, 0.3] }}
-                transition={{ repeat: Infinity, duration: 3 }}
-              />
+              {/* Subtle accent glow */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-40 h-6 bg-primary/5 dark:bg-primary/3 blur-xl rounded-full" />
             </motion.div>
           </AnimatePresence>
         </div>

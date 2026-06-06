@@ -5,91 +5,77 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden mt-1 pb-16 pt-10">
-
-      {/* BIG ORB */}
+    <footer className="relative overflow-hidden mt-12 pb-20 pt-16 border-t border-border bg-background transition-colors duration-300">
+      {/* SOFT CINEMATIC AMBIENT GLOW */}
       <motion.div
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[900px] h-[900px] rounded-full bg-white dark:bg-gray-800 opacity-10 blur-3xl"
-        initial={{ scale: 0.8, opacity: 0.1 }}
-        animate={{ scale: 1, opacity: 0.15 }}
-        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute left-1/2 -translate-x-1/2 bottom-[-150px] w-[500px] h-[300px] rounded-full bg-primary/10 dark:bg-primary/5 blur-[120px] pointer-events-none"
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.7, 0.9, 0.7],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* DUST PARTICLES */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(70)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-blue-300 dark:bg-blue-500"
-            style={{
-              width: Math.random() * 4 + 2,
-              height: Math.random() * 4 + 2,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              opacity: 0.2,
-            }}
-            animate={{ y: [0, -10, 0], opacity: [0.15, 0.3, 0.15] }}
-            transition={{ duration: 4 + Math.random() * 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-        ))}
-      </div>
-
-      {/* TEXT */}
-      <motion.div
-        className="relative z-10 text-center"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Get in Touch
-        </h2>
-        <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto text-lg">
-          Want to connect? Reach out anytime — I’ll respond as soon as I can.
-        </p>
-      </motion.div>
-
-      {/* SOCIAL BAR */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="relative z-10 mx-auto mt-10 w-fit px-8 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-full shadow-lg flex items-center gap-6 border border-gray-200 dark:border-gray-700"
+      {/* TEXT SECTION */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-        <FooterIcon href="https://www.instagram.com/elrizkianf_/" icon={<Instagram size={22} />} />
-        <FooterIcon href="https://github.com/FakhriBright" icon={<Github size={22} />} />
-        <FooterIcon href="https://www.linkedin.com/in/mohammad-fakhri-rizkian-0bb8b9330/" icon={<Linkedin size={22} />} />
-        <FooterIcon href="mailto:selaluli0123@gmail.com" icon={<Mail size={22} />} />
-      </motion.div>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-foreground mb-6 uppercase tracking-tight leading-none">
+            Let's create <span className="font-serif italic font-light lowercase text-primary">something</span> remarkable
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base font-sans tracking-wide leading-relaxed">
+            Want to connect or discuss a project? Reach out anytime — I'd love to collaborate.
+          </p>
+        </motion.div>
 
-      {/* COPYRIGHT */}
-      <motion.p
-        className="relative z-10 text-center mt-10 text-gray-600 dark:text-gray-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        © 2025 — Crafted by{" "}
-        <span className="font-semibold text-blue-600 dark:text-blue-400">
-          Moh. Fakhri Rizkian
-        </span>
-      </motion.p>
+        {/* SOCIAL BAR */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="flex items-center justify-center flex-wrap gap-6 md:gap-10 mt-12"
+        >
+          <FooterIcon href="https://www.instagram.com/elrizkianf_/" icon={<Instagram size={18} />} label="Instagram" />
+          <FooterIcon href="https://github.com/FakhriBright" icon={<Github size={18} />} label="GitHub" />
+          <FooterIcon href="https://www.linkedin.com/in/mohammad-fakhri-rizkian-0bb8b9330/" icon={<Linkedin size={18} />} label="LinkedIn" />
+          <FooterIcon href="mailto:selaluli0123@gmail.com" icon={<Mail size={18} />} label="Email" />
+        </motion.div>
 
+        {/* COPYRIGHT */}
+        <motion.p
+          className="text-center mt-16 text-muted-foreground font-sans text-xs uppercase tracking-widest"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          © 2026 — Crafted by{" "}
+          <span className="font-semibold text-foreground tracking-wider hover:text-primary transition-colors duration-300 cursor-pointer">
+            Moh. Fakhri Rizkian
+          </span>
+        </motion.p>
+      </div>
     </footer>
   );
 }
 
-/* ICON */
-function FooterIcon({ href, icon }) {
+/* SOCIAL LINK ICON & LABEL */
+function FooterIcon({ href, icon, label }) {
   return (
-    <Link href={href} target="_blank">
+    <Link href={href} target="_blank" className="flex items-center gap-3 group text-muted-foreground hover:text-foreground transition-all duration-300">
       <motion.div
-        whileHover={{ scale: 1.15, y: -4 }}
-        whileTap={{ scale: 0.9 }}
-        className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 shadow-inner hover:shadow-md transition"
+        whileHover={{ scale: 1.08, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+        className="p-3 rounded-full border border-border bg-card/30 group-hover:border-primary group-hover:text-primary transition-all duration-300"
       >
         {icon}
       </motion.div>
+      <span className="hidden sm:inline text-[10px] font-bold tracking-widest uppercase">{label}</span>
     </Link>
   );
 }

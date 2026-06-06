@@ -1,162 +1,157 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
-  @apply bg-white dark:bg-gray-900 transition-colors duration-300;
-}
-
-/* FONT */
-:root {
-  --font-primary: var(--font-poppins);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-primary);
+  @apply bg-background text-foreground transition-colors duration-500 overflow-x-hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* =========================================================
-   CUSTOM CURSOR + PARTICLE EFFECT
+   GLOBAL SVG NOISE OVERLAY
    ========================================================= */
-
-/* Hilangkan cursor default */
-html, body {
-  cursor: none !important;
-}
-
-/* Partikel yang berhamburan */
-.cursor-particle {
+body::before {
+  content: "";
   position: fixed;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
   pointer-events: none;
-  opacity: 1;
-  animation: particleFade 0.35s linear forwards;
-  z-index: 99998;
+  z-index: 9999;
 }
-
-/* Animasi partikel menghilang */
-@keyframes particleFade {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-}
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-  }
+.dark body::before {
+  opacity: 0.045;
 }
 
 /* =========================================================
-   GLOBAL SECTION SPACING (BIAR ABOUT RAPI)
+   GLOBAL SECTION SPACING
    ========================================================= */
-
-/* Spacing standar untuk semua section (64px atas + bawah) */
 .section {
-  padding-top: 4rem;   /* 64px */
-  padding-bottom: 4rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
-/* Versi lebih rapat (32px) jika ingin compact */
 .section-sm {
-  padding-top: 2rem;   /* 32px */
-  padding-bottom: 2rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 @layer base {
-  .theme {
-    --font-heading: var(--font-sans);
-    --font-sans: var(--font-sans);
-  }
   :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --background: oklch(0.975 0.004 45); /* Elegant warm ivory */
+    --foreground: oklch(0.12 0.01 45);    /* Dark charcoal black */
+    
+    --card: oklch(0.955 0.005 45);       /* Muted ivory card */
+    --card-foreground: oklch(0.12 0.01 45);
+    
+    --popover: oklch(0.975 0.004 45);
+    --popover-foreground: oklch(0.12 0.01 45);
+    
+    --primary: oklch(0.58 0.13 45);       /* Deep copper/amber */
+    --primary-foreground: oklch(0.975 0.004 45);
+    
+    --secondary: oklch(0.92 0.008 45);
+    --secondary-foreground: oklch(0.18 0.01 45);
+    
+    --muted: oklch(0.92 0.008 45);
+    --muted-foreground: oklch(0.52 0.01 45);
+    
+    --accent: oklch(0.52 0.12 60);        /* Matte Ochre Gold */
+    --accent-foreground: oklch(0.975 0.004 45);
+    
+    --destructive: oklch(0.55 0.2 25);
+    --border: oklch(0.12 0.01 45 / 8%);
+    --input: oklch(0.12 0.01 45 / 8%);
+    --ring: oklch(0.58 0.13 45);
+    
+    --radius: 0.5rem; /* More brutalist/minimal sharp corners */
+    
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
   }
+
   .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --background: oklch(0.08 0.006 240); /* Extreme deep obsidian background */
+    --foreground: oklch(0.96 0.005 45);  /* Clean ivory white */
+    
+    --card: oklch(0.11 0.008 240);       /* Smooth obsidian card */
+    --card-foreground: oklch(0.96 0.005 45);
+    
+    --popover: oklch(0.1 0.007 240);
+    --popover-foreground: oklch(0.96 0.005 45);
+    
+    --primary: oklch(0.78 0.13 55);      /* Bright luminous copper/amber */
+    --primary-foreground: oklch(0.08 0.006 240);
+    
+    --secondary: oklch(0.15 0.008 240);
+    --secondary-foreground: oklch(0.96 0.005 45);
+    
+    --muted: oklch(0.15 0.008 240);
+    --muted-foreground: oklch(0.6 0.01 45);
+    
+    --accent: oklch(0.82 0.1 85);        /* Soft metallic gold glow */
+    --accent-foreground: oklch(0.08 0.006 240);
+    
+    --destructive: oklch(0.65 0.18 25);
+    --border: oklch(1 0 0 / 8%);         /* Hairline boundaries */
+    --input: oklch(1 0 0 / 12%);
+    --ring: oklch(0.78 0.13 55);
   }
+
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-sans;
-  }
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.5 0.01 45 / 20%);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: oklch(1 0 0 / 12%);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

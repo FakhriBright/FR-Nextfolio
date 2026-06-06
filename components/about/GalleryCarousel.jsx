@@ -13,11 +13,10 @@ const IMAGES = [
 ];
 
 export default function GalleryCarousel() {
-  // ukuran kecil + hanya 4 tampil
-  const ITEM_WIDTH = 170;
-  const GAP = 20;
-  const VISIBLE_COUNT = 4; // ⬅️ tampil 4 gambar saja
-  const SPEED_DELTA = 0.18;
+  const ITEM_WIDTH = 180;
+  const GAP = 24;
+  const VISIBLE_COUNT = 4; // Shows 4 items nicely on desktop
+  const SPEED_DELTA = 0.15;
 
   const images = [...IMAGES, ...IMAGES];
   const totalOriginal = IMAGES.length;
@@ -72,16 +71,16 @@ export default function GalleryCarousel() {
   };
 
   return (
-    <section className="py-12">
-      <h2 className="text-center text-3xl font-bold dark:text-white mb-8">
-        My Gallery
+    <section className="py-12 border-t border-border/30 mt-8">
+      <h2 className="text-center text-3xl md:text-5xl font-bold font-display text-foreground mb-12 uppercase tracking-tighter">
+        Visual <span className="font-serif italic font-light lowercase text-primary">gallery</span>
       </h2>
 
-      {/* FIXED WIDTH agar hanya 4 gambar yang tampil */}
+      {/* Slide Gallery Container */}
       <div
-        className="relative overflow-hidden mx-auto"
+        className="relative overflow-hidden mx-auto max-w-full"
         style={{
-          width: VISIBLE_COUNT * (ITEM_WIDTH + GAP), // ⬅️ container pas 4 item
+          width: VISIBLE_COUNT * (ITEM_WIDTH + GAP) - GAP,
         }}
       >
         <motion.div
@@ -90,38 +89,44 @@ export default function GalleryCarousel() {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
           style={{ x }}
-          className="flex items-center gap-[20px] cursor-grab active:cursor-grabbing select-none"
+          className="flex items-center gap-[24px] cursor-grab active:cursor-grabbing select-none"
         >
           {images.map((src, i) => (
             <div
               key={i}
               style={{ width: ITEM_WIDTH }}
-              className="flex-shrink-0 relative"
+              className="flex-shrink-0 relative group"
             >
               <div
-                className="rounded-2xl overflow-hidden shadow-xl border border-white/10"
+                className="border border-border bg-card/40 p-2 pb-5 rounded-none shadow-md transition-all duration-500 hover:border-primary/40"
                 style={{
-                  height: 220,
+                  height: 240,
                 }}
               >
-                <img
-                  src={src}
-                  alt={`gallery-${i}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+                <div className="w-full h-[180px] overflow-hidden bg-background border border-border/40">
+                  <img
+                    src={src}
+                    alt={`gallery-${i}`}
+                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 hover:scale-[1.04] transition-all duration-700 ease-out"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="pt-2 px-1 flex items-center justify-between text-[8px] font-mono tracking-widest text-muted-foreground uppercase">
+                  <span>[ SLIDE // 0{ (i % totalOriginal) + 1 } ]</span>
+                  <span>MFR</span>
+                </div>
               </div>
             </div>
           ))}
         </motion.div>
 
-        {/* Soft fade kiri/kanan */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white dark:from-gray-900 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white dark:from-gray-900 to-transparent" />
+        {/* Shadow Fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent" />
       </div>
 
-      <p className="text-center mt-4 text-sm text-gray-600 dark:text-gray-300/80">
-        Drag images to move • auto orbit is ON
+      <p className="text-center mt-6 text-[9px] font-mono tracking-widest uppercase text-muted-foreground">
+        Drag images to explore • auto orbit active
       </p>
     </section>
   );

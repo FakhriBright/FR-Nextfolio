@@ -3,45 +3,50 @@ import { motion } from "framer-motion";
 
 export default function AnimatedBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Blob Biru */}
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-background pointer-events-none transition-colors duration-500">
+      {/* Premium Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-45 dark:opacity-35" />
+      
+      {/* Subtle Dot Matrix Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(var(--border)_1px,transparent_1px)] bg-[size:40px_40px] bg-[position:20px_20px] pointer-events-none opacity-25 dark:opacity-15" />
+
+      {/* Golden Solar Halo - Top Right */}
       <motion.div
-        className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-500/25 rounded-full blur-3xl"
+        className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary/4 dark:bg-primary/3 rounded-full blur-[140px] pointer-events-none"
         animate={{
-          x: [0, 80, -100, 0],
-          y: [0, 60, -80, 0],
+          x: [0, 40, -20, 0],
+          y: [0, -20, 40, 0],
         }}
         transition={{
           repeat: Infinity,
-          duration: 20,
+          duration: 30,
           ease: "easeInOut",
         }}
       />
 
-      {/* Blob Ungu */}
+      {/* Copper Sunset Flare - Bottom Left */}
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-3xl"
+        className="absolute -bottom-40 -left-40 w-[550px] h-[550px] bg-accent/4 dark:bg-accent/3 rounded-full blur-[140px] pointer-events-none"
         animate={{
-          x: [0, -100, 120, 0],
-          y: [0, -70, 50, 0],
+          x: [0, -40, 30, 0],
+          y: [0, 30, -30, 0],
         }}
         transition={{
           repeat: Infinity,
-          duration: 22,
+          duration: 35,
           ease: "easeInOut",
         }}
       />
 
-      {/* Aura Tengah */}
+      {/* Central Ambient Glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 w-[700px] h-[700px] bg-blue-400/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-primary/2 dark:bg-primary/1 rounded-full blur-[160px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         animate={{
-          scale: [1, 1.1, 0.9, 1],
-          opacity: [0.4, 0.6, 0.4, 0.5],
+          scale: [1, 1.1, 0.95, 1],
         }}
         transition={{
           repeat: Infinity,
-          duration: 16,
+          duration: 25,
           ease: "easeInOut",
         }}
       />
