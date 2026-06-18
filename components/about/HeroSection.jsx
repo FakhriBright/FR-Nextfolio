@@ -33,7 +33,8 @@ export default function HeroSection() {
   return (
     <motion.section 
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
       variants={containerVariants}
       className="relative w-full flex flex-col items-center justify-between py-10 md:py-16 select-none bg-background text-foreground"
     >

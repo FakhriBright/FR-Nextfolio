@@ -106,7 +106,7 @@ export default function ContactPage() {
             onChange={handleChange}
             placeholder="Full Name"
             required
-            className="w-full px-4 py-3.5 bg-background/40 border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans rounded-none text-sm"
+            className="w-full px-4 py-3.5 bg-card border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans rounded-none text-sm"
           />
 
           <input
@@ -116,7 +116,7 @@ export default function ContactPage() {
             onChange={handleChange}
             placeholder="Email Address"
             required
-            className="w-full px-4 py-3.5 bg-background/40 border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans rounded-none text-sm"
+            className="w-full px-4 py-3.5 bg-card border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans rounded-none text-sm"
           />
 
           <textarea
@@ -126,7 +126,7 @@ export default function ContactPage() {
             placeholder="Your Message..."
             rows="5"
             required
-            className="w-full px-4 py-3.5 bg-background/40 border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans resize-none rounded-none text-sm"
+            className="w-full px-4 py-3.5 bg-card border border-border text-foreground placeholder:text-muted-foreground outline-none focus:border-primary/60 transition-all duration-300 font-sans resize-none rounded-none text-sm"
           ></textarea>
 
           <button

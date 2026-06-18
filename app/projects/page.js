@@ -71,7 +71,7 @@ export default function ProjectsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-12 pr-14 py-3.5 rounded-none border border-border/80 
-                          bg-card/45 text-foreground placeholder:text-muted-foreground 
+                          bg-card text-foreground placeholder:text-muted-foreground 
                           outline-none focus:border-primary/50 
                           transition-all duration-300 font-sans text-sm"
               />

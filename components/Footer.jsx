@@ -42,7 +42,7 @@ export default function Footer() {
         >
           <FooterIcon href="https://www.instagram.com/elrizkianf_/" icon={<Instagram size={18} />} label="Instagram" />
           <FooterIcon href="https://github.com/FakhriBright" icon={<Github size={18} />} label="GitHub" />
-          <FooterIcon href="https://www.linkedin.com/in/mohammad-fakhri-rizkian-0bb8b9330/" icon={<Linkedin size={18} />} label="LinkedIn" />
+          <FooterIcon href="https://www.linkedin.com/in/m-fakhri-rizkian/" icon={<Linkedin size={18} />} label="LinkedIn" />
           <FooterIcon href="mailto:selaluli0123@gmail.com" icon={<Mail size={18} />} label="Email" />
         </motion.div>
 
