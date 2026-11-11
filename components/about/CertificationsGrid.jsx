@@ -10,7 +10,7 @@ const certifications = [
     issuer: "MySkill Indonesia",
     date: "2025",
     logo: "/certificates/UX Writing.png",
-    desc: "Memahami teknik penulisan mikro untuk meningkatkan pengalaman pengguna melalui konten digital yang efektif dan humanis.",
+    desc: "Studied digital microcopy techniques to create effective, human-centered user experiences across web interfaces.",
   },
   {
     id: "uiux",
@@ -18,7 +18,7 @@ const certifications = [
     issuer: "MySkill Indonesia",
     date: "2025",
     logo: "/certificates/UIUX Design.jpg",
-    desc: "Menyelesaikan pelatihan intensif UI/UX Design menggunakan Figma, termasuk riset pengguna, prototyping, dan usability testing.",
+    desc: "Completed UI/UX training in Figma covering user research, component wireframing, design systems, and interactive prototyping.",
   },
   {
     id: "teladan",
@@ -26,7 +26,7 @@ const certifications = [
     issuer: "SMK TI BAZMA",
     date: "2024",
     logo: "/certificates/Teladan Kerapihan.jpeg",
-    desc: "Dianugerahi penghargaan atas kerapihan, kedisiplinan, dan penampilan profesional di lingkungan sekolah.",
+    desc: "Awarded institutional recognition for discipline, professional presentation, and academic neatness.",
   },
   {
     id: "fosjabarroad",
@@ -34,7 +34,7 @@ const certifications = [
     issuer: "Forum OSIS Jawa Barat",
     date: "2024",
     logo: "/certificates/Road Show Fosjabar.jpg",
-    desc: "Berpartisipasi aktif dalam kegiatan Road Show FOSJABAR untuk memperkuat jaringan kepemimpinan pelajar Jawa Barat.",
+    desc: "Participated in provincial student council leadership outreach initiatives across West Java.",
   },
   {
     id: "publicspeaking",
@@ -42,7 +42,7 @@ const certifications = [
     issuer: "MySkill Indonesia",
     date: "2025",
     logo: "/certificates/Public Speaking.jpg",
-    desc: "Meningkatkan kemampuan berbicara di depan umum dan membangun rasa percaya diri dalam berbagai situasi formal.",
+    desc: "Trained in structured public speaking, formal presentation delivery, and confident communication.",
   },
   {
     id: "paskibra",
@@ -50,7 +50,7 @@ const certifications = [
     issuer: "Kecamatan Ciampea",
     date: "2023",
     logo: "/certificates/Paskibra Kecamatan.jpeg",
-    desc: "Menjadi bagian dari pengibar bendera kecamatan, menunjukkan dedikasi dan disiplin tinggi.",
+    desc: "Selected flag-raising squad member for Ciampea District, demonstrating discipline, punctuality, and teamwork.",
   },
   {
     id: "fosjabaronline",
@@ -58,7 +58,7 @@ const certifications = [
     issuer: "Forum OSIS Jawa Barat",
     date: "2024",
     logo: "/certificates/Fosjabar Temu Online.png",
-    desc: "Mengikuti kegiatan FOSJABAR secara daring yang membahas isu kepemudaan dan peran pelajar dalam masyarakat digital.",
+    desc: "Participated in provincial online forum focusing on student leadership in the digital era.",
   },
   {
     id: "excel",
@@ -66,7 +66,7 @@ const certifications = [
     issuer: "DQLab",
     date: "2024",
     logo: "/certificates/dqlab_basic_excel.png",
-    desc: "Menguasai dasar Excel termasuk formula, pengolahan data, dan visualisasi grafik.",
+    desc: "Completed fundamental spreadsheet data processing, formulas, data cleaning, and chart visualization.",
   },
   {
     id: "datasci",
@@ -74,7 +74,7 @@ const certifications = [
     issuer: "DQLab",
     date: "2024",
     logo: "/certificates/Data Scince.png",
-    desc: "Dasar-dasar data science: analisis data, statistik, dan eksplorasi dataset menggunakan Python.",
+    desc: "Introduced to exploratory data analysis, descriptive statistics, and Python scripting fundamentals.",
   },
   {
     id: "cyber",
@@ -82,7 +82,7 @@ const certifications = [
     issuer: "MySkill Indonesia",
     date: "2025",
     logo: "/certificates/Cyber Security Course.png",
-    desc: "Belajar konsep keamanan digital, manajemen password, perlindungan data, dan etika keamanan online.",
+    desc: "Studied cybersecurity fundamentals, access management, secure password policies, and digital data privacy.",
   },
   {
     id: "advokasi",
@@ -90,7 +90,7 @@ const certifications = [
     issuer: "Dispora Kabupaten Bogor",
     date: "2024",
     logo: "/certificates/Advokasi Dispora.jpeg",
-    desc: "Berperan aktif dalam program advokasi pemuda tingkat Kabupaten.",
+    desc: "Active contributor to youth advocacy and community programs under the Department of Youth and Sports, Bogor Regency.",
   },
   {
     id: "ketuaosis",
@@ -98,7 +98,7 @@ const certifications = [
     issuer: "SMK TI BAZMA",
     date: "2024",
     logo: "/certificates/Ketua OSIS.png",
-    desc: "Memimpin organisasi siswa, mengelola program, dan menjadi representatif utama sekolah.",
+    desc: "Elected President of the Student Council, leading student committees, institutional events, and student welfare initiatives.",
   },
   {
     id: "libasta",
@@ -106,7 +106,7 @@ const certifications = [
     issuer: "SMK TI BAZMA",
     date: "2025",
     logo: "/certificates/Sertifikat LIBASTA 2025.jpg",
-    desc: "Panitia dan peserta aktif LIBASTA 2025 dalam kegiatan sekolah dan pengembangan karakter.",
+    desc: "Organizing committee member and participant in annual school-wide character and leadership development initiatives.",
   },
   {
     id: "esq",
@@ -114,7 +114,7 @@ const certifications = [
     issuer: "ESQ Indonesia",
     date: "2025",
     logo: "/certificates/ESQ Leadership Center.jpg",
-    desc: "Pelatihan kepemimpinan berbasis kecerdasan emosional & spiritual bersama ESQ Leadership Center.",
+    desc: "Completed leadership and character development program emphasizing emotional intelligence and teamwork.",
   },
   {
     id: "Pidato",
@@ -122,7 +122,7 @@ const certifications = [
     issuer: "SMAN 1 Leuwiliyang",
     date: "2025",
     logo: "/certificates/mansion3.png",
-    desc: "Ajang perlombaan tingkat JABODETABEK & Banten.",
+    desc: "Participated in regional academic and speech competition across the Jabodetabek and Banten areas.",
   },
 ];
 
@@ -149,11 +149,11 @@ export default function AboutCertification() {
                 }`}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-none border border-border/70 overflow-hidden bg-card flex-shrink-0 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg border border-border overflow-hidden bg-secondary/30 flex-shrink-0 flex items-center justify-center">
                     <img
                       src={cert.logo}
                       alt={cert.title}
-                      className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition duration-300"
+                      className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
                     />
                   </div>
                   <div>
@@ -190,9 +190,9 @@ export default function AboutCertification() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="border border-border/80 bg-card/25 backdrop-blur-md rounded-none p-6 shadow-xl relative border-t-2 border-l-2 border-primary/20"
+              className="border border-border bg-card rounded-2xl p-6 shadow-sm relative hover:border-primary/40 transition-all"
             >
-              <div className="relative group overflow-hidden border border-border bg-background mb-6">
+              <div className="relative group overflow-hidden rounded-xl border border-border bg-secondary/20 mb-6">
                 <img
                   src={selected.logo}
                   alt={selected.title}
@@ -202,20 +202,20 @@ export default function AboutCertification() {
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between gap-4">
-                  <span className="text-[9px] uppercase font-bold tracking-widest text-primary">{selected.issuer}</span>
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-muted-foreground">[ {selected.date} ]</span>
+                  <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-primary">{selected.issuer}</span>
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-muted-foreground">[ {selected.date} ]</span>
                 </div>
 
                 <h3 className="text-xl md:text-2xl font-bold font-heading text-foreground">
                   {selected.title}
                 </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed font-sans pt-2 border-t border-border/30">
+                <p className="text-sm text-muted-foreground leading-relaxed font-sans pt-2 border-t border-border/50">
                   {selected.desc}
                 </p>
 
                 <div className="pt-4">
-                  <Link href="/certificates" className="block text-center border border-primary/30 text-primary hover:text-primary-foreground hover:bg-primary py-3 transition-all duration-300 font-heading text-xs font-bold tracking-widest uppercase">
+                  <Link href="/certificates" className="block text-center rounded-full border border-border bg-card hover:bg-foreground hover:text-background text-foreground py-3 transition-all duration-300 font-heading text-xs font-bold tracking-wider uppercase">
                     View All Credentials →
                   </Link>
                 </div>

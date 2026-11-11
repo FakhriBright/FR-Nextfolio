@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import CardProject from "@/components/CardProject";
 import { projects } from "@/data/projects";
+import { Search } from "lucide-react";
 
 const categories = [
   "All",
   "Web Development",
+  "Web Applications",
+  "IoT & Embedded",
   "Graphic Design",
-  "IoT & Hardware",
 ];
 
 export default function ProjectsPage() {
@@ -27,9 +29,11 @@ export default function ProjectsPage() {
   }, []);
 
   const filtered = projects.filter((project) => {
+    const query = search.toLowerCase();
     const matchSearch =
-      project.title.toLowerCase().includes(search.toLowerCase()) ||
-      project.description.toLowerCase().includes(search.toLowerCase());
+      project.title.toLowerCase().includes(query) ||
+      project.description.toLowerCase().includes(query) ||
+      project.tech?.some((t) => t.toLowerCase().includes(query));
 
     const matchCategory =
       activeCategory === "All" || project.category === activeCategory;
@@ -37,52 +41,51 @@ export default function ProjectsPage() {
     return matchSearch && matchCategory;
   });
 
-  const showFeaturedLayout = activeCategory === "All" && filtered.length >= 2;
-  const featuredProject = filtered[0];
-  const tallProject = filtered[1];
-  const remainingProjects = filtered.slice(2);
-
   return (
-    <main className="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-20 min-h-screen">
-      {/* Sticky Header Section */}
-      <div className="sticky top-[77px] z-30 bg-background/95 backdrop-blur-md pt-8 pb-6 mb-12 border-b border-border/10">
-        {/* Editorial Title */}
-        <div>
-          <h1 className="text-5xl md:text-7xl font-bold font-display tracking-tighter uppercase text-foreground">
-            Project <span className="font-serif italic font-light lowercase text-primary">showcase</span>
+    <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 py-12 md:py-20 min-h-screen bg-[#F3EFE5] text-[#171918]">
+      {/* Header Section: Clean & Natural */}
+      <div className="pt-4 pb-8 mb-12 border-b border-[#171918]/10">
+        <div className="space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B9FF66]/30 border border-[#B9FF66] text-[#171918] text-xs font-mono font-bold tracking-wider uppercase">
+            <span>Archive</span>
+            <span className="text-[#3157D5]">&bull;</span>
+            <span>All Works</span>
+          </div>
+
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black font-display tracking-tighter uppercase text-[#171918] leading-[0.9]">
+            All
+            <br />
+            <span className="font-serif italic font-light lowercase text-[#3157D5]">projects</span>
           </h1>
-          <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-heading font-bold mt-3 max-w-2xl leading-relaxed">
-            An archive of digital solutions, high-fidelity user interfaces, and full-stack experiments
-          </p>
         </div>
 
+        <p className="text-sm sm:text-base text-[#171918]/70 font-sans mt-4 max-w-2xl leading-relaxed">
+          Index of web development applications, responsive prototypes, and digital systems built during vocational education and personal practice.
+        </p>
+
         {/* Search & Filter Toolbar */}
-        <div className="mt-8">
-          <div className="flex flex-col lg:flex-row gap-6 items-stretch lg:items-center">
-            {/* Search Box */}
+        <div className="mt-8 space-y-4">
+          <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center">
+            {/* Search Input */}
             <div className="relative flex-1">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">
-                🔍
-              </span>
+              <Search
+                size={16}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-black/40"
+              />
               <input
                 id="project-search"
                 type="text"
-                placeholder="Search projects..."
+                placeholder="Search by title, description, or technology (e.g. React, Next.js, Laravel)..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-12 pr-14 py-3.5 rounded-none border border-border/80 
-                          bg-card text-foreground placeholder:text-muted-foreground 
-                          outline-none focus:border-primary/50 
-                          transition-all duration-300 font-sans text-sm"
+                className="w-full pl-11 pr-14 py-3.5 rounded-xl border border-black/15 bg-white text-[#131411] placeholder:text-black/40 outline-none focus:border-black focus:ring-1 focus:ring-black transition-all font-sans text-sm shadow-sm"
               />
-              <kbd className="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-1 text-[9px] 
-                            bg-card border border-border rounded text-muted-foreground 
-                            font-mono hidden md:block">
+              <kbd className="absolute right-3.5 top-1/2 -translate-y-1/2 px-2 py-0.5 text-[10px] bg-black/5 border border-black/10 rounded-md text-black/50 font-mono hidden md:block">
                 ⌘K
               </kbd>
             </div>
 
-            {/* Filter Categories */}
+            {/* Category Pills */}
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => {
                 const count =
@@ -90,28 +93,30 @@ export default function ProjectsPage() {
                     ? projects.length
                     : projects.filter((p) => p.category === category).length;
 
+                const isActive = activeCategory === category;
+
                 return (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
                     className={`
-                      px-4 py-2.5 rounded-none text-xs font-heading font-bold uppercase tracking-wider transition-all duration-300
-                      border backdrop-blur-sm flex items-center gap-2
+                      px-4 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all
+                      border flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-black
                       ${
-                        activeCategory === category
-                          ? "bg-primary/10 border-primary text-primary"
-                          : "border-border bg-card/30 text-muted-foreground hover:border-foreground/30 hover:text-foreground"
+                        isActive
+                          ? "bg-[#131411] text-white border-black font-semibold shadow-sm"
+                          : "border-black/15 bg-white text-black/65 hover:border-black/35 hover:text-black"
                       }
                     `}
                   >
-                    {category}
+                    <span>{category}</span>
                     <span
                       className={`
-                        px-1.5 py-0.5 text-[9px] font-mono font-bold border
+                        px-1.5 py-0.2 text-[9px] font-mono rounded-full
                         ${
-                          activeCategory === category
-                            ? "bg-primary/20 text-primary border-primary/20"
-                            : "bg-background/80 text-muted-foreground border-border/40"
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : "bg-black/5 text-black/60"
                         }
                       `}
                     >
@@ -125,50 +130,24 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Projects Layout Grid */}
+      {/* Projects Grid */}
       {filtered.length === 0 ? (
-        <div className="text-center py-24 border border-dashed border-border/60">
-          <div className="text-4xl mb-4">🔍</div>
-          <h3 className="text-lg font-bold font-heading text-foreground mb-2">
-            No projects found
-          </h3>
-          <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
-            Try adjusting your search terms or filter to another category.
+        <div className="text-center py-24 rounded-2xl border border-dashed border-black/15 bg-white/50 p-8">
+          <p className="text-3xl mb-3">🔍</p>
+          <h2 className="text-lg font-bold font-heading text-[#131411] mb-1">
+            No projects matched your search
+          </h2>
+          <p className="text-sm text-black/60 max-w-sm mx-auto leading-relaxed">
+            Try adjusting your search terms or selecting another category.
           </p>
         </div>
-      ) : showFeaturedLayout ? (
-        <div className="space-y-8">
-          {/* Featured Section Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-8 items-stretch">
-            <div className="h-full">
-              <CardProject {...featuredProject} />
-            </div>
-
-            <div className="h-full">
-              <CardProject {...tallProject} />
-            </div>
-          </div>
-
-          {/* Remaining Grid */}
-          {remainingProjects.length > 0 && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {remainingProjects.map((project) => (
-                <div key={project.id} className="h-full">
-                  <CardProject {...project} />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((project) => (
-            <div key={project.id} className="h-full">
-              <CardProject {...project} />
-            </div>
+            <CardProject key={project.id} {...project} />
           ))}
         </div>
       )}
-    </main>
+    </div>
   );
 }

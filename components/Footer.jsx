@@ -1,81 +1,75 @@
 "use client";
-import { motion } from "framer-motion";
-import { Instagram, Github, Linkedin, Mail } from "lucide-react";
+
 import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="relative overflow-hidden mt-12 pb-20 pt-16 border-t border-border bg-background transition-colors duration-300">
-      {/* SOFT CINEMATIC AMBIENT GLOW */}
-      <motion.div
-        className="absolute left-1/2 -translate-x-1/2 bottom-[-150px] w-[500px] h-[300px] rounded-full bg-primary/10 dark:bg-primary/5 blur-[120px] pointer-events-none"
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.7, 0.9, 0.7],
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* TEXT SECTION */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-foreground mb-6 uppercase tracking-tight leading-none">
-            Let's create <span className="font-serif italic font-light lowercase text-primary">something</span> remarkable
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base font-sans tracking-wide leading-relaxed">
-            Want to connect or discuss a project? Reach out anytime — I'd love to collaborate.
-          </p>
-        </motion.div>
-
-        {/* SOCIAL BAR */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.6 }}
-          className="flex items-center justify-center flex-wrap gap-6 md:gap-10 mt-12"
-        >
-          <FooterIcon href="https://www.instagram.com/elrizkianf_/" icon={<Instagram size={18} />} label="Instagram" />
-          <FooterIcon href="https://github.com/FakhriBright" icon={<Github size={18} />} label="GitHub" />
-          <FooterIcon href="https://www.linkedin.com/in/m-fakhri-rizkian/" icon={<Linkedin size={18} />} label="LinkedIn" />
-          <FooterIcon href="mailto:selaluli0123@gmail.com" icon={<Mail size={18} />} label="Email" />
-        </motion.div>
-
-        {/* COPYRIGHT */}
-        <motion.p
-          className="text-center mt-16 text-muted-foreground font-sans text-xs uppercase tracking-widest"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          © 2026 — Crafted by{" "}
-          <span className="font-semibold text-foreground tracking-wider hover:text-primary transition-colors duration-300 cursor-pointer">
-            Moh. Fakhri Rizkian
+    <footer className="w-full px-6 md:px-12 lg:px-20 xl:px-28 py-12 border-t border-[#171918]/10 bg-[#F3EFE5] text-[#171918]">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* Brand */}
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 flex items-center justify-center">
+            <img
+              src="/logo/FR.png"
+              alt="FR"
+              className="w-6 h-6 object-contain invert"
+            />
+          </div>
+          <span className="font-mono text-xs uppercase tracking-wider text-black/60">
+            Moh. Fakhri Rizkian &bull; Web Developer
           </span>
-        </motion.p>
+        </div>
+
+        {/* Verified Social Channels */}
+        <div className="flex items-center gap-6 text-xs font-mono uppercase tracking-wider">
+          <Link
+            href="https://github.com/FakhriBright"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black/60 hover:text-black transition-colors"
+          >
+            GitHub
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/m-fakhri-rizkian/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black/60 hover:text-black transition-colors"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="https://www.instagram.com/elrizkianf_/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black/60 hover:text-black transition-colors"
+          >
+            Instagram
+          </Link>
+          <Link
+            href="mailto:moh.fakhririzkian@gmail.com"
+            className="text-black/60 hover:text-black transition-colors"
+          >
+            Email
+          </Link>
+        </div>
+
+        {/* Back to top */}
+        <button
+          onClick={scrollToTop}
+          aria-label="Back to top"
+          className="p-2.5 rounded-full border border-black/15 bg-white text-black/70 hover:text-black hover:border-black/30 transition-colors"
+        >
+          <ArrowUp size={14} />
+        </button>
+
       </div>
     </footer>
-  );
-}
-
-/* SOCIAL LINK ICON & LABEL */
-function FooterIcon({ href, icon, label }) {
-  return (
-    <Link href={href} target="_blank" className="flex items-center gap-3 group text-muted-foreground hover:text-foreground transition-all duration-300">
-      <motion.div
-        whileHover={{ scale: 1.08, y: -2 }}
-        whileTap={{ scale: 0.95 }}
-        className="p-3 rounded-full border border-border bg-card/30 group-hover:border-primary group-hover:text-primary transition-all duration-300"
-      >
-        {icon}
-      </motion.div>
-      <span className="hidden sm:inline text-[10px] font-bold tracking-widest uppercase">{label}</span>
-    </Link>
   );
 }

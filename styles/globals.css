@@ -1,6 +1,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,13 +12,11 @@ html {
 }
 
 body {
-  @apply bg-background text-foreground transition-colors duration-500 overflow-x-hidden;
+  @apply bg-[#F3EFE5] text-[#171918] overflow-x-hidden;
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* =========================================================
-   GLOBAL SVG NOISE OVERLAY
-   ========================================================= */
+/* Subtle Film Grain Noise */
 body::before {
   content: "";
   position: fixed;
@@ -31,52 +29,41 @@ body::before {
   pointer-events: none;
   z-index: 9999;
 }
-.dark body::before {
-  opacity: 0.045;
-}
-
-/* =========================================================
-   GLOBAL SECTION SPACING
-   ========================================================= */
-.section {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-.section-sm {
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
-}
 
 @layer base {
   :root {
-    --background: oklch(0.975 0.004 45); /* Elegant warm ivory */
-    --foreground: oklch(0.12 0.01 45);    /* Dark charcoal black */
+    --background: #F3EFE5;
+    --foreground: #171918;
     
-    --card: oklch(0.955 0.005 45);       /* Muted ivory card */
-    --card-foreground: oklch(0.12 0.01 45);
+    --card: #FFFFFF;
+    --card-foreground: #171918;
     
-    --popover: oklch(0.975 0.004 45);
-    --popover-foreground: oklch(0.12 0.01 45);
+    --popover: #FFFFFF;
+    --popover-foreground: #171918;
     
-    --primary: oklch(0.58 0.13 45);       /* Deep copper/amber */
-    --primary-foreground: oklch(0.975 0.004 45);
+    --primary: #B9FF66;
+    --primary-foreground: #171918;
     
-    --secondary: oklch(0.92 0.008 45);
-    --secondary-foreground: oklch(0.18 0.01 45);
+    --secondary: #E5E0D5;
+    --secondary-foreground: #171918;
     
-    --muted: oklch(0.92 0.008 45);
-    --muted-foreground: oklch(0.52 0.01 45);
+    --muted: #E5E0D5;
+    --muted-foreground: #6A6D65;
     
-    --accent: oklch(0.52 0.12 60);        /* Matte Ochre Gold */
-    --accent-foreground: oklch(0.975 0.004 45);
+    --accent: #B9FF66;
+    --accent-foreground: #171918;
+    --accent-lime: #B9FF66;
+    --accent-orange: #E98B45;
+    --accent-cobalt: #3157D5;
+    --accent-charcoal: #171918;
+    --accent-ivory: #F3EFE5;
     
-    --destructive: oklch(0.55 0.2 25);
-    --border: oklch(0.12 0.01 45 / 8%);
-    --input: oklch(0.12 0.01 45 / 8%);
-    --ring: oklch(0.58 0.13 45);
+    --destructive: #DC2626;
+    --border: rgba(23, 25, 24, 0.12);
+    --input: rgba(23, 25, 24, 0.15);
+    --ring: #171918;
     
-    --radius: 0.5rem; /* More brutalist/minimal sharp corners */
+    --radius: 0.5rem;
     
     --font-sans: 'Plus Jakarta Sans', sans-serif;
     --font-heading: 'Outfit', sans-serif;
@@ -84,40 +71,8 @@ body::before {
     --font-serif: 'Cormorant Garamond', serif;
   }
 
-  .dark {
-    --background: oklch(0.08 0.006 240); /* Extreme deep obsidian background */
-    --foreground: oklch(0.96 0.005 45);  /* Clean ivory white */
-    
-    --card: oklch(0.11 0.008 240);       /* Smooth obsidian card */
-    --card-foreground: oklch(0.96 0.005 45);
-    
-    --popover: oklch(0.1 0.007 240);
-    --popover-foreground: oklch(0.96 0.005 45);
-    
-    --primary: oklch(0.78 0.13 55);      /* Bright luminous copper/amber */
-    --primary-foreground: oklch(0.08 0.006 240);
-    
-    --secondary: oklch(0.15 0.008 240);
-    --secondary-foreground: oklch(0.96 0.005 45);
-    
-    --muted: oklch(0.15 0.008 240);
-    --muted-foreground: oklch(0.6 0.01 45);
-    
-    --accent: oklch(0.82 0.1 85);        /* Soft metallic gold glow */
-    --accent-foreground: oklch(0.08 0.006 240);
-    
-    --destructive: oklch(0.65 0.18 25);
-    --border: oklch(1 0 0 / 8%);         /* Hairline boundaries */
-    --input: oklch(1 0 0 / 12%);
-    --ring: oklch(0.78 0.13 55);
-  }
-
   * {
     @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
   }
 }
 
@@ -126,32 +81,17 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-serif {
-  font-family: var(--font-serif);
-}
-
-/* Scrollbar Customization */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.5 0.01 45 / 20%);
-  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: rgba(0, 0, 0, 0.35);
 }
-.dark ::-webkit-scrollbar-thumb {
-  background: oklch(1 0 0 / 12%);
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}

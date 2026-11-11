@@ -1,32 +1,19 @@
 "use client";
-import { useState } from "react";
-import { ChevronDown, Download } from "lucide-react";
+
+import { useState, useRef, useEffect } from "react";
+import { Download, ExternalLink } from "lucide-react";
 
 export default function DownloadCV() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div className="relative inline-block">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-black font-heading font-semibold hover:opacity-90 transition duration-300 shadow-lg shadow-primary/10"
-      >
-        <Download size={18} />
-        Download CV
-        <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
-      </button>
-
-      {open && (
-        <div className="absolute mt-2 w-56 rounded-xl border border-border bg-card shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-          <a
-            href="/cv/web-developer-cv.pdf"
-            download
-            className="block px-4 py-3 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition duration-300 font-heading font-medium"
-          >
-            CV Web Developer
-          </a>
-        </div>
-      )}
-    </div>
+    <a
+      href="/cv/web-developer-cv.pdf"
+      download="M-Fakhri-Rizkian-CV.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-bold text-xs uppercase tracking-wider hover:opacity-95 transition-all duration-300 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      <Download size={15} />
+      <span>Download CV</span>
+    </a>
   );
 }
