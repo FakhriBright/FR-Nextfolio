@@ -18,22 +18,22 @@ export default function BottomNav() {
   return (
     <nav
       aria-label="Mobile Navigation"
-      className="lg:hidden fixed bottom-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none pb-[env(safe-area-inset-bottom)]"
+      className="lg:hidden fixed bottom-4 inset-x-0 z-50 flex justify-center px-2 pointer-events-none pb-[env(safe-area-inset-bottom)]"
     >
-      <div className="pointer-events-auto flex items-center gap-1 px-3 py-2 rounded-full bg-[#171918]/92 backdrop-blur-xl border border-white/15 shadow-2xl text-white">
+      <div className="pointer-events-auto flex items-center justify-center gap-0.5 sm:gap-1 p-1.5 rounded-full bg-[#191A23] border-2 border-black shadow-[0_10px_30px_rgba(0,0,0,0.4)] text-white max-w-[calc(100vw-16px)]">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
             <Link
               key={item.label}
               href={item.href}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-heading font-medium tracking-wide transition-all ${
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-heading transition-all whitespace-nowrap ${
                 item.active
-                  ? "bg-[#B9FF66] text-[#171918] font-bold shadow-sm"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
+                  ? "bg-[#B9FF66] text-[#191A23] font-bold shadow-sm"
+                  : "text-white hover:text-[#B9FF66] hover:bg-white/10 font-medium"
               }`}
             >
-              <Icon size={15} />
+              <Icon size={14} className="shrink-0" />
               <span>{item.label}</span>
             </Link>
           );
