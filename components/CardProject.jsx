@@ -29,9 +29,9 @@ export default function CardProject({
   }, [mediaType, images]);
 
   return (
-    <article className="group rounded-2xl overflow-hidden border border-black/10 bg-white hover:border-black/30 transition-all duration-300 hover:shadow-xl flex flex-col h-full text-[#131411]">
+    <article className="group rounded-2xl overflow-hidden border border-[#191919]/10 bg-white hover:border-[#191919]/30 transition-all duration-300 hover:shadow-xl flex flex-col h-full text-[#191919]">
       {/* Media Container */}
-      <div className="relative w-full aspect-[16/10] bg-black/5 overflow-hidden border-b border-black/10">
+      <div className="relative w-full aspect-[16/10] bg-[#E9E9E4] overflow-hidden border-b border-[#191919]/10">
         {mediaType === "carousel" ? (
           <>
             <Image
@@ -49,7 +49,7 @@ export default function CardProject({
                   onClick={() => setCurrentSlide(i)}
                   aria-label={`Go to slide ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === currentSlide ? "bg-white w-5" : "bg-white/60 w-1.5"
+                    i === currentSlide ? "bg-[#B7F36B] w-5" : "bg-white/70 w-1.5"
                   }`}
                 />
               ))}
@@ -76,7 +76,7 @@ export default function CardProject({
 
         {/* Category Pill */}
         <div className="absolute top-3 left-3 z-10 pointer-events-none">
-          <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white text-[10px] font-mono font-medium uppercase tracking-wider">
+          <span className="px-3 py-1 rounded-full bg-[#191919]/80 backdrop-blur-md text-[#F5F5F0] text-[10px] font-mono font-medium uppercase tracking-wider">
             {category}
           </span>
         </div>
@@ -85,11 +85,11 @@ export default function CardProject({
       {/* Content */}
       <div className="p-6 flex flex-col flex-1 justify-between gap-5">
         <div className="space-y-3">
-          <h3 className="text-xl font-bold font-heading text-[#131411] group-hover:text-black transition-colors leading-tight">
+          <h3 className="text-xl font-bold font-heading text-[#191919] group-hover:text-black transition-colors leading-tight">
             {title}
           </h3>
 
-          <p className="text-sm text-black/65 font-sans leading-relaxed">
+          <p className="text-sm text-[#777873] font-sans leading-relaxed">
             {description}
           </p>
 
@@ -98,7 +98,7 @@ export default function CardProject({
             {tech?.map((item, i) => (
               <span
                 key={i}
-                className="text-[10px] px-2.5 py-1 rounded-md bg-black/[0.04] border border-black/10 text-black/75 font-mono font-medium"
+                className="text-[10px] px-2.5 py-1 rounded-md bg-[#E9E9E4] border border-[#191919]/10 text-[#191919] font-mono font-medium"
               >
                 {item}
               </span>
@@ -107,13 +107,13 @@ export default function CardProject({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 pt-4 border-t border-black/10">
+        <div className="flex items-center gap-2 pt-4 border-t border-[#191919]/10">
           {link && (
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#131411] text-white font-heading font-bold text-xs uppercase tracking-wider hover:bg-black/80 transition-all duration-300 shadow-sm"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#191919] text-[#F5F5F0] font-heading font-medium text-xs uppercase tracking-wider hover:bg-[#B7F36B] hover:text-[#191919] transition-all duration-300 shadow-sm"
             >
               <span>View Project</span>
               <ExternalLink size={13} />
@@ -126,7 +126,7 @@ export default function CardProject({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View Source Code on GitHub"
-              className="inline-flex items-center justify-center p-2.5 rounded-full border border-black/15 bg-white hover:bg-black/5 text-[#131411] transition-colors"
+              className="inline-flex items-center justify-center p-2.5 rounded-full border border-[#191919]/15 bg-white hover:bg-[#E9E9E4] text-[#191919] transition-colors"
             >
               <Github size={15} />
             </a>

@@ -9,19 +9,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full px-6 md:px-12 lg:px-20 xl:px-28 py-12 border-t border-[#171918]/10 bg-[#F3EFE5] text-[#171918]">
+    <footer className="w-full px-6 md:px-12 lg:px-20 xl:px-28 py-12 border-t border-[#191919]/10 bg-[#F5F5F0] text-[#191919]">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-7 h-7 flex items-center justify-center">
+          <div className="w-6 h-6 flex items-center justify-center">
             <img
               src="/logo/FR.png"
               alt="FR"
-              className="w-6 h-6 object-contain invert"
+              className="w-5 h-5 object-contain invert"
             />
           </div>
-          <span className="font-mono text-xs uppercase tracking-wider text-black/60">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#777873]">
             Moh. Fakhri Rizkian &bull; Web Developer
           </span>
         </div>
@@ -32,7 +32,7 @@ export default function Footer() {
             href="https://github.com/FakhriBright"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black/60 hover:text-black transition-colors"
+            className="text-[#777873] hover:text-[#191919] transition-colors"
           >
             GitHub
           </Link>
@@ -40,7 +40,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/m-fakhri-rizkian/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black/60 hover:text-black transition-colors"
+            className="text-[#777873] hover:text-[#191919] transition-colors"
           >
             LinkedIn
           </Link>
@@ -48,13 +48,13 @@ export default function Footer() {
             href="https://www.instagram.com/elrizkianf_/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black/60 hover:text-black transition-colors"
+            className="text-[#777873] hover:text-[#191919] transition-colors"
           >
             Instagram
           </Link>
           <Link
             href="mailto:moh.fakhririzkian@gmail.com"
-            className="text-black/60 hover:text-black transition-colors"
+            className="text-[#777873] hover:text-[#191919] transition-colors"
           >
             Email
           </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="p-2.5 rounded-full border border-black/15 bg-white text-black/70 hover:text-black hover:border-black/30 transition-colors"
+          className="p-2.5 rounded-full border border-[#191919]/15 bg-white text-[#777873] hover:text-[#191919] hover:border-[#191919]/30 transition-colors"
         >
           <ArrowUp size={14} />
         </button>

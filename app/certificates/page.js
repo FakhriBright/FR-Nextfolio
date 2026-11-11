@@ -5,24 +5,24 @@ import CardCertificate from "@/components/CardCertificate";
 
 export default function CertificatesPage() {
   return (
-    <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 py-12 md:py-20 min-h-screen bg-[#F3EFE5] text-[#171918]">
-      {/* Header Section: Clean & Natural */}
-      <div className="pt-4 pb-8 mb-12 border-b border-[#171918]/10">
+    <div className="w-full px-6 md:px-12 lg:px-20 xl:px-28 py-12 md:py-20 min-h-screen bg-[#F5F5F0] text-[#191919]">
+      {/* Header Section: Clean Editorial */}
+      <div className="pt-4 pb-10 mb-12 border-b border-[#191919]/10">
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B9FF66]/30 border border-[#B9FF66] text-[#171918] text-xs font-mono font-bold tracking-wider uppercase">
-            <span>Verified Credentials</span>
-            <span className="text-[#3157D5]">&bull;</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E9E9E4] border border-[#191919]/10 text-[#191919] text-xs font-mono font-medium tracking-wider uppercase">
+            <span>Credentials</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B7F36B]" />
             <span>Honors</span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black font-display tracking-tighter uppercase text-[#171918] leading-[0.9]">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black font-display tracking-tighter uppercase text-[#191919] leading-[0.9]">
             Certificates
             <br />
-            <span className="font-serif italic font-light lowercase text-[#3157D5]">&amp; honors</span>
+            <span className="font-serif italic font-light lowercase text-[#777873]">&amp; honors</span>
           </h1>
         </div>
 
-        <p className="text-sm sm:text-base text-[#171918]/70 font-sans mt-4 max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-[#777873] font-sans mt-4 max-w-2xl leading-relaxed">
           Course certifications, leadership honors, and technical competencies acquired through vocational education and certified training programs.
         </p>
       </div>
