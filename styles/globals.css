@@ -1,6 +1,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,18 +8,12 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
-  @apply bg-[#F5F5F0] text-[#191919] overflow-x-hidden;
+  @apply bg-[#FFFFFF] text-[#191A23] overflow-x-hidden;
   font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-/* Neutral, comfortable selection */
-::selection {
-  background: #191919;
-  color: #F5F5F0;
 }
 
 /* Subtle Film Grain Noise */
@@ -31,44 +25,49 @@ body::before {
   right: 0;
   bottom: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.02;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 9999;
 }
 
 @layer base {
   :root {
-    --background: #F5F5F0;
-    --foreground: #191919;
+    --background: #F3EFE5;
+    --foreground: #171918;
     
     --card: #FFFFFF;
-    --card-foreground: #191919;
+    --card-foreground: #171918;
     
     --popover: #FFFFFF;
-    --popover-foreground: #191919;
+    --popover-foreground: #171918;
     
-    --primary: #B7F36B;
-    --primary-foreground: #191919;
+    --primary: #B9FF66;
+    --primary-foreground: #171918;
     
-    --secondary: #E9E9E4;
-    --secondary-foreground: #191919;
+    --secondary: #E5E0D5;
+    --secondary-foreground: #171918;
     
-    --muted: #E9E9E4;
-    --muted-foreground: #777873;
+    --muted: #E5E0D5;
+    --muted-foreground: #6A6D65;
     
-    --accent: #B7F36B;
-    --accent-foreground: #191919;
-    --accent-lime: #B7F36B;
+    --accent: #B9FF66;
+    --accent-foreground: #171918;
+    --accent-lime: #B9FF66;
+    --accent-orange: #E98B45;
+    --accent-cobalt: #3157D5;
+    --accent-charcoal: #171918;
+    --accent-ivory: #F3EFE5;
     
     --destructive: #DC2626;
-    --border: rgba(25, 25, 25, 0.1);
-    --input: rgba(25, 25, 25, 0.12);
-    --ring: #191919;
+    --border: rgba(23, 25, 24, 0.12);
+    --input: rgba(23, 25, 24, 0.15);
+    --ring: #171918;
     
     --radius: 0.5rem;
     
     --font-sans: 'Plus Jakarta Sans', sans-serif;
-    --font-heading: 'Outfit', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-grotesk: 'Space Grotesk', sans-serif;
     --font-display: 'Syne', sans-serif;
     --font-serif: 'Cormorant Garamond', serif;
   }
@@ -85,15 +84,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(25, 25, 25, 0.2);
-  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(25, 25, 25, 0.4);
+  background: rgba(0, 0, 0, 0.35);
 }

@@ -1,179 +1,245 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus, ArrowUpRight, Linkedin } from "lucide-react";
 
 export default function ProfileStory() {
-  const skills = [
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const milestones = [
+    {
+      id: "01",
+      role: "Web Developer Intern",
+      institution: "PT Asuransi Tugu Pratama Indonesia",
+      period: "Nov 2025 — Present",
+      description:
+        "Developing and refining enterprise web application interfaces, writing modular and responsive frontend components, and collaborating within a corporate IT development workflow.",
+      highlights: ["Enterprise Web Applications", "Responsive Frontend Components", "Production Workflows"],
+    },
+    {
+      id: "02",
+      role: "SIJA Vocational Student",
+      institution: "SMK TI BAZMA",
+      period: "Vocational High School",
+      description:
+        "Enrolled in the Information Systems, Networking, and Applications (SIJA) 4-year vocational program. Rigorous curriculum focused on full web development, relational database engineering, and Linux system fundamentals.",
+      highlights: ["Web Application Engineering", "Database Systems (PostgreSQL)", "Network Architecture"],
+    },
+    {
+      id: "03",
+      role: "Student Council President (Ketua OSIS)",
+      institution: "SMK TI BAZMA",
+      period: "2024 — 2025",
+      description:
+        "Elected to lead the student council organization. Managed cross-functional committees, coordinated student development events, and represented student interests across vocational activities.",
+      highlights: ["Executive Leadership", "Event Coordination", "Team Governance"],
+    },
+  ];
+
+  const skillCategories = [
     {
       category: "Frontend Development",
-      items: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Vue.js", "Tailwind CSS"],
+      items: ["HTML5", "CSS3", "JavaScript (ES6+)", "React", "Next.js", "Vue.js", "Tailwind CSS"],
     },
     {
       category: "Backend & Database",
-      items: ["PHP", "Laravel", "PostgreSQL", "REST APIs"],
+      items: ["PHP", "Laravel", "PostgreSQL", "REST APIs", "MVC Architecture"],
     },
     {
       category: "Workflow & Tools",
-      items: ["Git", "GitHub", "Responsive Design", "Web Standards"],
+      items: ["Git & GitHub", "Figma to Code", "Responsive UI", "REST Integration"],
     },
   ];
 
   return (
-    <section
-      id="profile"
-      className="py-24 md:py-32 w-full px-6 md:px-12 lg:px-20 xl:px-28 bg-[#F5F5F0] text-[#191919] border-t border-[#191919]/10"
-    >
-      {/* ── SECTION HEADER ── */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 pb-8 border-b border-[#191919]/10">
-        <div className="space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#777873]">
-            About &amp; Background
+    <section id="profile" className="py-20 md:py-28 w-full px-6 md:px-12 lg:px-20 xl:px-28 bg-[#F3F3F3] text-[#191A23] border-b border-[#191A23]/15">
+      
+      {/* ── POSITIVUS HEADER: Lime Pill Badge + Title + Subtitle ── */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 pb-6 border-b border-[#191A23]/15">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+          <span className="px-3 py-1 rounded-md bg-[#B9FF66] text-[#191A23] font-heading font-extrabold text-lg uppercase tracking-wide border border-[#191A23] shadow-sm">
+            About &amp; Journey
           </span>
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black font-display uppercase tracking-tight text-[#191919] leading-[0.9]">
-            My journey <span className="font-serif italic font-normal text-[#191919]/70 lowercase">&amp; experience</span>
-          </h2>
+          <p className="text-[#191A23]/70 text-sm sm:text-base font-sans max-w-lg leading-relaxed">
+            Vocational background, professional internship experience, and technical capabilities as a Web Developer.
+          </p>
         </div>
-
-        <p className="text-[#777873] text-sm sm:text-base font-sans max-w-md leading-relaxed">
-          Vocational education in SIJA at SMK TI BAZMA paired with practical web application development in an enterprise internship.
-        </p>
       </div>
 
-      {/* ── EDITORIAL GRID ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      {/* ── TOP EDITORIAL GRID: Team Profile Card + Narrative ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch mb-20">
         
-        {/* Left Column: Natural Photographic Portrait (5 cols) */}
-        <div className="lg:col-span-5 relative">
-          <div className="relative w-full max-w-[400px] mx-auto aspect-[4/5] rounded-[2rem] bg-[#E9E9E4] border border-[#191919]/10 overflow-hidden shadow-sm p-4 flex flex-col justify-between">
-            <div className="relative w-full h-[90%] flex items-end justify-center">
+        {/* Left: Positivus Team Card Style with Portrait */}
+        <div className="lg:col-span-5 rounded-[36px] border-2 border-[#191A23] bg-white p-8 shadow-positivus flex flex-col justify-between gap-6">
+          <div className="flex items-center gap-5 pb-6 border-b border-[#191A23]/15">
+            <div className="relative w-20 h-20 rounded-2xl bg-[#B9FF66] border-2 border-[#191A23] overflow-hidden shrink-0 shadow-sm">
               <Image
                 src="/profile.png"
                 alt="Moh. Fakhri Rizkian"
-                width={400}
-                height={500}
+                fill
+                sizes="80px"
                 quality={85}
-                className="w-full h-auto object-contain max-h-[98%] filter contrast-[1.02]"
+                className="object-contain object-bottom"
               />
             </div>
-
-            <div className="pt-3 px-2 flex items-center justify-between text-xs font-mono text-[#777873] border-t border-[#191919]/10">
-              <span className="text-[#191919] font-medium">Moh. Fakhri Rizkian</span>
-              <span>Web Developer</span>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-heading font-bold text-xl text-[#191A23] truncate">
+                M. Fakhri Rizkian
+              </h3>
+              <p className="text-xs font-mono text-[#191A23]/70 uppercase tracking-wider font-semibold">
+                Web Developer
+              </p>
             </div>
+            <a
+              href="https://www.linkedin.com/in/m-fakhri-rizkian/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              className="w-9 h-9 rounded-full bg-[#191A23] text-white flex items-center justify-center hover:bg-[#B9FF66] hover:text-[#191A23] transition-colors shrink-0"
+            >
+              <Linkedin size={16} />
+            </a>
+          </div>
+
+          <p className="text-sm font-sans text-[#191A23]/80 leading-relaxed">
+            Vocational student in Information Systems, Networking, and Applications (SIJA) at SMK TI BAZMA, currently undertaking an internship at PT Asuransi Tugu Pratama Indonesia. Focused on clean web architectures, modern component systems, and accessible user experiences.
+          </p>
+
+          <div className="pt-2 flex items-center justify-between text-xs font-mono text-[#191A23]/60">
+            <span>SMK TI BAZMA &times; Tugu Pratama</span>
+            <span className="font-bold text-[#191A23]">2026</span>
           </div>
         </div>
 
-        {/* Right Column: Narrative, Editorial Timeline & Skills (7 cols) */}
-        <div className="lg:col-span-7 space-y-16">
-          
-          {/* Brief Factual Intro */}
-          <div className="space-y-3 text-base sm:text-lg text-[#191919]/80 font-sans leading-relaxed">
-            <p>
-              I am a <strong className="text-[#191919] font-semibold">Web Developer</strong> and student in Information Systems, Networking, and Applications (SIJA) at <strong className="text-[#191919] font-semibold">SMK TI BAZMA</strong>.
-            </p>
-            <p className="text-sm sm:text-base text-[#777873]">
-              Currently undertaking an internship at <strong className="text-[#191919] font-semibold">PT Asuransi Tugu Pratama Indonesia</strong>, collaborating on web application interface workflows and building responsive, accessible components.
-            </p>
+        {/* Right: Technical Competencies with Positivus Service Cards ── */}
+        <div className="lg:col-span-7 flex flex-col justify-between gap-4">
+          <div className="text-xs font-mono uppercase tracking-widest text-[#191A23]/60 font-bold mb-1">
+            Technical Stack Overview
           </div>
 
-          {/* ── EDITORIAL VERTICAL TIMELINE ── */}
-          <div className="space-y-6">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-[#777873]">
-              Experience &amp; Milestones
-            </h3>
-
-            <div className="border-l-2 border-[#191919]/15 pl-6 sm:pl-8 space-y-10 relative">
-              
-              {/* Item 1: Internship */}
-              <div className="relative space-y-2">
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-[#191919] border-2 border-[#F5F5F0]" />
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <h4 className="text-xl sm:text-2xl font-bold font-heading text-[#191919]">
-                    Web Developer Intern
-                  </h4>
-                  <span className="text-xs font-mono text-[#777873]">
-                    Nov 2025 &mdash; Present
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
+            {skillCategories.map((cat, i) => (
+              <div
+                key={cat.category}
+                className={`rounded-[28px] border-2 border-[#191A23] p-6 shadow-positivus flex flex-col justify-between gap-4 ${
+                  i === 0
+                    ? "bg-[#B9FF66] text-[#191A23]"
+                    : i === 1
+                    ? "bg-white text-[#191A23]"
+                    : "bg-[#191A23] text-white"
+                }`}
+              >
+                <div className="space-y-3">
+                  <span className={`px-2.5 py-0.5 rounded-md font-mono text-xs font-bold uppercase tracking-wider inline-block border border-current/20 ${
+                    i === 0 ? "bg-white text-[#191A23]" : i === 1 ? "bg-[#B9FF66] text-[#191A23]" : "bg-white/15 text-white"
+                  }`}>
+                    {cat.category}
                   </span>
-                </div>
-                <p className="text-sm font-medium text-[#191919]">
-                  PT Asuransi Tugu Pratama Indonesia
-                </p>
-                <p className="text-sm text-[#777873] leading-relaxed pt-1">
-                  Frontend interface development and responsive web application components within an enterprise corporate environment.
-                </p>
-              </div>
 
-              {/* Item 2: Education */}
-              <div className="relative space-y-2">
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-[#777873] border-2 border-[#F5F5F0]" />
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <h4 className="text-xl sm:text-2xl font-bold font-heading text-[#191919]">
-                    SIJA Program Student
-                  </h4>
-                  <span className="text-xs font-mono text-[#777873]">
-                    Vocational Education
-                  </span>
-                </div>
-                <p className="text-sm font-medium text-[#191919]">
-                  SMK TI BAZMA
-                </p>
-                <p className="text-sm text-[#777873] leading-relaxed pt-1">
-                  Curriculum focused on web development, relational database systems, network engineering, and system administration.
-                </p>
-              </div>
-
-              {/* Item 3: Leadership */}
-              <div className="relative space-y-2">
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-[#777873] border-2 border-[#F5F5F0]" />
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <h4 className="text-xl sm:text-2xl font-bold font-heading text-[#191919]">
-                    Student Council President (Ketua OSIS)
-                  </h4>
-                  <span className="text-xs font-mono text-[#777873]">
-                    2024 &mdash; 2025
-                  </span>
-                </div>
-                <p className="text-sm font-medium text-[#191919]">
-                  SMK TI BAZMA
-                </p>
-                <p className="text-sm text-[#777873] leading-relaxed pt-1">
-                  Student organization governance, event coordination, project management, and team leadership.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          {/* ── TECHNICAL COMPETENCIES: EDITORIAL CATEGORY TILES ── */}
-          <div className="space-y-6 pt-6 border-t border-[#191919]/10">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-[#777873]">
-              Technical Skills &amp; Tools
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {skills.map((grp) => (
-                <div key={grp.category} className="space-y-3">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#191919] font-semibold block">
-                    {grp.category}
-                  </span>
-                  <ul className="space-y-1.5 text-xs font-mono text-[#777873]">
-                    {grp.items.map((item) => (
-                      <li
-                        key={item}
-                        className="py-1 px-2.5 rounded-md bg-[#E9E9E4] text-[#191919] hover:bg-[#B7F36B] transition-colors duration-150 inline-block mr-1.5 mb-1.5"
-                      >
-                        {item}
+                  <ul className="space-y-1.5 text-xs font-mono pt-1">
+                    {cat.items.map((item) => (
+                      <li key={item} className="flex items-center gap-1.5 opacity-90">
+                        <span>&bull;</span>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
-          </div>
 
+                <div className="text-[10px] font-mono uppercase tracking-wider opacity-60 pt-2 border-t border-current/20">
+                  Verified Tooling
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
+
+      {/* ── POSITIVUS WORKING PROCESS ACCORDION (Step-by-Step Experience) ── */}
+      <div className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
+          <span className="px-3 py-1 rounded-md bg-[#B9FF66] text-[#191A23] font-heading font-extrabold text-base uppercase tracking-wide border border-[#191A23]">
+            Track Record
+          </span>
+          <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#191A23]">
+            Experience &amp; Milestones
+          </h3>
+        </div>
+
+        <div className="space-y-5">
+          {milestones.map((m, idx) => {
+            const isOpen = openIndex === idx;
+
+            return (
+              <div
+                key={m.id}
+                className={`rounded-[32px] border-2 border-[#191A23] transition-all duration-300 shadow-positivus overflow-hidden ${
+                  isOpen ? "bg-[#B9FF66] text-[#191A23]" : "bg-white text-[#191A23] hover:bg-[#F8F8F8]"
+                }`}
+              >
+                {/* Header Row */}
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? -1 : idx)}
+                  className="w-full px-6 sm:px-10 py-6 sm:py-8 flex items-center justify-between gap-4 text-left focus:outline-none"
+                >
+                  <div className="flex items-center gap-6 sm:gap-8">
+                    <span className="text-3xl sm:text-5xl font-extrabold font-heading text-[#191A23]">
+                      {m.id}
+                    </span>
+                    <div>
+                      <h4 className="text-lg sm:text-2xl font-bold font-heading text-[#191A23]">
+                        {m.role}
+                      </h4>
+                      <p className="text-xs sm:text-sm font-sans font-medium text-[#191A23]/70">
+                        {m.institution} &bull; <span className="font-mono">{m.period}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Circular Plus/Minus Toggle Button in Positivus Style */}
+                  <div className="w-11 h-11 rounded-full bg-white border-2 border-[#191A23] flex items-center justify-center shrink-0 shadow-sm text-[#191A23]">
+                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                  </div>
+                </button>
+
+                {/* Expanded Content with Clean Animation */}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div className="px-6 sm:px-10 pb-8 pt-2 border-t-2 border-[#191A23]/20 space-y-4">
+                        <p className="text-sm sm:text-base font-sans text-[#191A23]/85 leading-relaxed max-w-3xl">
+                          {m.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {m.highlights.map((h) => (
+                            <span
+                              key={h}
+                              className="px-3 py-1 rounded-full bg-white border border-[#191A23] text-xs font-mono font-medium text-[#191A23] shadow-sm"
+                            >
+                              {h}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
     </section>
   );
 }

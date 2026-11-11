@@ -42,9 +42,15 @@ module.exports = {
           foreground: "var(--card-foreground)",
         },
       },
+      boxShadow: {
+        positivus: "0px 5px 0px 0px #191A23",
+        "positivus-lg": "0px 7px 0px 0px #191A23",
+        "positivus-dark": "0px 5px 0px 0px #B9FF66",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
         heading: ["var(--font-heading)", "sans-serif"],
+        grotesk: ["var(--font-grotesk)", "sans-serif"],
         display: ["var(--font-display)", "sans-serif"],
         serif: ["var(--font-serif)", "serif"],
       },

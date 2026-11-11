@@ -54,7 +54,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased bg-[#F5F5F0] text-[#191919] overflow-x-hidden">
+      <body className="min-h-screen antialiased bg-[#F3EFE5] text-[#171918] selection:bg-[#B9FF66] selection:text-[#171918] overflow-x-hidden">
         {/* Editorial Top Navigation */}
         <Navbar />
 

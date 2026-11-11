@@ -29,9 +29,9 @@ export default function CardProject({
   }, [mediaType, images]);
 
   return (
-    <article className="group rounded-2xl overflow-hidden border border-[#191919]/10 bg-white hover:border-[#191919]/30 transition-all duration-300 hover:shadow-xl flex flex-col h-full text-[#191919]">
+    <article className="group rounded-[30px] overflow-hidden border-2 border-[#191A23] bg-white hover:shadow-positivus-lg transition-all duration-300 shadow-positivus flex flex-col h-full text-[#191A23]">
       {/* Media Container */}
-      <div className="relative w-full aspect-[16/10] bg-[#E9E9E4] overflow-hidden border-b border-[#191919]/10">
+      <div className="relative w-full aspect-[16/10] bg-[#F3F3F3] overflow-hidden border-b-2 border-[#191A23]">
         {mediaType === "carousel" ? (
           <>
             <Image
@@ -48,8 +48,8 @@ export default function CardProject({
                   type="button"
                   onClick={() => setCurrentSlide(i)}
                   aria-label={`Go to slide ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === currentSlide ? "bg-[#B7F36B] w-5" : "bg-white/70 w-1.5"
+                  className={`h-2 rounded-full transition-all duration-300 border border-[#191A23] ${
+                    i === currentSlide ? "bg-[#B9FF66] w-6" : "bg-white/80 w-2"
                   }`}
                 />
               ))}
@@ -76,20 +76,20 @@ export default function CardProject({
 
         {/* Category Pill */}
         <div className="absolute top-3 left-3 z-10 pointer-events-none">
-          <span className="px-3 py-1 rounded-full bg-[#191919]/80 backdrop-blur-md text-[#F5F5F0] text-[10px] font-mono font-medium uppercase tracking-wider">
+          <span className="px-3 py-1 rounded-full bg-[#B9FF66] text-[#191A23] border border-[#191A23] text-[10px] font-heading font-bold uppercase tracking-wider shadow-sm">
             {category}
           </span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-1 justify-between gap-5">
+      <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between gap-5">
         <div className="space-y-3">
-          <h3 className="text-xl font-bold font-heading text-[#191919] group-hover:text-black transition-colors leading-tight">
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#191A23] group-hover:text-black transition-colors leading-tight">
             {title}
           </h3>
 
-          <p className="text-sm text-[#777873] font-sans leading-relaxed">
+          <p className="text-sm text-[#191A23]/70 font-sans leading-relaxed">
             {description}
           </p>
 
@@ -98,7 +98,7 @@ export default function CardProject({
             {tech?.map((item, i) => (
               <span
                 key={i}
-                className="text-[10px] px-2.5 py-1 rounded-md bg-[#E9E9E4] border border-[#191919]/10 text-[#191919] font-mono font-medium"
+                className="text-[10px] px-2.5 py-1 rounded-lg bg-[#F3F3F3] border border-[#191A23]/20 text-[#191A23] font-mono font-medium"
               >
                 {item}
               </span>
@@ -107,13 +107,13 @@ export default function CardProject({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 pt-4 border-t border-[#191919]/10">
+        <div className="flex items-center gap-2 pt-4 border-t border-[#191A23]/15">
           {link && (
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#191919] text-[#F5F5F0] font-heading font-medium text-xs uppercase tracking-wider hover:bg-[#B7F36B] hover:text-[#191919] transition-all duration-300 shadow-sm"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#191A23] text-white font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#B9FF66] hover:text-[#191A23] transition-all duration-300 border-2 border-[#191A23] shadow-sm"
             >
               <span>View Project</span>
               <ExternalLink size={13} />
@@ -126,7 +126,7 @@ export default function CardProject({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View Source Code on GitHub"
-              className="inline-flex items-center justify-center p-2.5 rounded-full border border-[#191919]/15 bg-white hover:bg-[#E9E9E4] text-[#191919] transition-colors"
+              className="inline-flex items-center justify-center p-3 rounded-full border-2 border-[#191A23] bg-white hover:bg-[#B9FF66] text-[#191A23] transition-all shadow-sm"
             >
               <Github size={15} />
             </a>
